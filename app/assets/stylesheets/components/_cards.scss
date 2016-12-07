@@ -56,8 +56,7 @@
     transition: ease-in-out, opacity .4s ease-in-out;
     p {
       position: absolute;
-      top: -30px;
-      transition: ease-in-out, top .3s ease-in-out;
+      top: 10px;
     }
     ul {
       position: absolute;
@@ -89,9 +88,6 @@
   box-shadow: 1px 1px 6px 0px #96A6C7;
   .card-info {
     opacity: 1;
-    p {
-      top: 10px;
-    }
     ul {
       top: 60px;
     }

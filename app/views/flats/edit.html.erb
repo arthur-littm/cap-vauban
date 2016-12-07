@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Edit <%= @flat.title %></h1>
+  <%= simple_form_for @flat do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <div class="form-inline">
+  <%= f.input :capacity, as: :integer %>
+  <%= f.input :bathroom, as: :integer %>
+  <%= f.input :toilet, as: :integer %>
+  </div>
+  <%= f.input :banner_photo, as: :attachinary %>
+  <%= f.input :photos, as: :attachinary %>
+  <%= f.button :submit %>
+  <% end %>
+</div>

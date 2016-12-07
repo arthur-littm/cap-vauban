@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :flats, only: [:index, :show]
+  resources :flats
 
   get 'booking/index'
 
   get 'booking/show'
 
   get 'booking/edit'
+
+  mount Attachinary::Engine => "/attachinary"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
