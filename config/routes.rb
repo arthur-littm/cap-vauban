@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'flats/index'
-
-  get 'flats/show'
+  resources :flats, only: [:index, :show]
 
   get 'booking/index'
 

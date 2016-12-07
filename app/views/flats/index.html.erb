@@ -1,2 +1,25 @@
-<h1>Flats#index</h1>
-<p>Find me in app/views/flats/index.html.erb</p>
+<div class="cards-container">
+
+  <% @flats.each do |flat| %>
+  <div class="card">
+   <div class="card-image" style="background-image: url(<%= image_path("background.jpg") %>);">
+   </div>
+   <div class="card-info">
+    <p>Description</p>
+    <ul>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+    </ul>
+  </div>
+  <div class="card-title">
+    <h3><%= flat.title %></h3>
+  </div>
+  <div class="card-date">
+    <p>2016</p>
+  </div>
+  <%= link_to "", flat_path(flat), class: "card-link" %>
+</div>
+<% end %>
+
+</div>

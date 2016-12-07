@@ -1,2 +1,20 @@
-<h1>Flats#show</h1>
-<p>Find me in app/views/flats/show.html.erb</p>
+<div class="container">
+  <div class="media">
+    <div class="media-body">
+      <div class="media-section">
+        <h2><%= @flat.title %></h2>
+        <%= image_tag "background.jpg" %>
+      </div>
+      <div class="media-section">
+        <h2>Description</h2>
+        <p><%= @flat.description %></p>
+      </div>
+    </div>
+    <div class="media-aside">
+      <div class="media-section">
+        <h2>Book it</h2>
+        ...
+      </div>
+    </div>
+  </div>
+</div>
