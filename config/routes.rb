@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  resources :flats
+  resources :flats do
+    resources :bookings, only: [:new, :create]
+  end
 
-  get 'booking/index'
-
-  get 'booking/show'
-
-  get 'booking/edit'
+  resources :bookings, only: [:index, :destroy, :show, :edit, :update]
 
   mount Attachinary::Engine => "/attachinary"
 

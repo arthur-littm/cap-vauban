@@ -10,7 +10,7 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-    <%= link_to "My bookings", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "My bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
 
     <!-- Profile picture and dropdown -->

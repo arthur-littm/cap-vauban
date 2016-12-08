@@ -22,11 +22,33 @@
     <div class="media-aside">
       <div class="media-section">
         <h2>Book it</h2>
-        ...
+        <% if user_signed_in? %>
+        <%= form_for [@flat, @flat.bookings.build], class: 'form form-inline' do |f| %>
+        <div class="input-daterange input-group">
+          <%= f.date_field :start_date, class: 'input-sm form-control' %>
+          <span class="input-group-addon">to</span>
+          <%= f.date_field :end_date, class: 'input-sm form-control' %>
+        </div>
+        <%= f.submit "Book now", class: "btn btn-primary", id: "book-button" %>
+        <% end %>
+        <% else %>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+        <% end %>
+        <div class="flat-calendar">
+          <%= month_calendar events: @flat.bookings do |date, bookings| %>
+          <%= date.day %>
+          <% bookings.each do |booking| %>
+          <div>
+            <% booking.start_date %>
+            <p>Booked</p>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-  <% if current_user.admin %>
+  <% if user_signed_in? && current_user.admin %>
   <%= link_to "EDIT", edit_flat_path(@flat) %>
   <% end %>
 </div>

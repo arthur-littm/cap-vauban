@@ -1,5 +1,4 @@
 <div class="cards-container">
-
   <% @flats.each do |flat| %>
   <div class="card">
     <% if flat.banner_photo %>
@@ -10,11 +9,11 @@
     <div class="card-image" style="background-image: url(<%= image %>);">
     </div>
     <div class="card-info">
-      <p>Description</p>
+      <p><%= flat.description %></p>
       <ul>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
+        <li><i class="fa fa-users" aria-hidden="true"></i> <%= flat.capacity %></li>
+        <li><i class="fa fa-bath" aria-hidden="true"></i> <%= flat.bathroom %></li>
+        <li><i class="fa fa-male" aria-hidden="true"></i><i class="fa fa-female" aria-hidden="true"></i> <%= flat.toilet %></li>
       </ul>
     </div>
     <div class="card-title">
@@ -26,5 +25,10 @@
     <%= link_to "", flat_path(flat), class: "card-link" %>
   </div>
   <% end %>
+</div>
 
+<div class="container">
+  <%= month_calendar do |date| %>
+  <%= date.day %>
+  <% end %>
 </div>
