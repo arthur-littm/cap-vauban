@@ -31,13 +31,13 @@
 </div>
 
 <%= content_for(:after_js) do %>
-<script>
-  $('#calendar').fullCalendar({
-    header: {
-      left: 'today,month,agendaWeek,agendaDay',
-      center: 'title',
-      right: 'prev,next'
-    }
-  });
-</script>
+  <script>
+    $('#calendar').fullCalendar({
+      events: [
+      {
+        title  : 'event1',
+        start  : '2016-12-01'
+      }]
+    });
+  </script>
 <% end %>
