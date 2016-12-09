@@ -23,27 +23,29 @@
       <div class="media-section">
         <h2>Book it</h2>
         <% if user_signed_in? %>
-        <%= form_for [@flat, @flat.bookings.build], class: 'form form-inline' do |f| %>
-        <div class="input-daterange input-group">
-          <%= f.date_field :start_date, class: 'input-sm form-control' %>
-          <span class="input-group-addon">to</span>
-          <%= f.date_field :end_date, class: 'input-sm form-control' %>
-        </div>
-        <%= f.submit "Book now", class: "btn btn-primary", id: "book-button" %>
+        <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
+        <%= f.input :start_date, placeholder: "From", as: :date, label: false, required: true %>
+        <%= f.input :end_date, placeholder: "Until", as: :date, label: false, required: true %>
+        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        <p>Book</p>
+        <% end %>
         <% end %>
         <% else %>
         <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
         <% end %>
-        <div class="flat-calendar">
-          <%= month_calendar events: @flat.bookings do |date, bookings| %>
-          <%= date.day %>
-          <% bookings.each do |booking| %>
-          <div>
-            <% booking.start_date %>
-            <p>Booked</p>
-          </div>
-          <% end %>
-          <% end %>
+        <div class="flat-prices">
+          <h3>Seasonal prices</h3>
+          <ul>
+            <li class="price">Low season (oct. 1st - dec. 16th) <strong>300€/week</strong></li>
+            <li class="price">Mid season (dec. 17th - jan. 6th) <strong>430€/week</strong></li>
+            <li class="price">Low season (jan. 7th - mar. 31st) <strong>250€/week</strong></li>
+            <li class="price">Low season (apr. 1st - jun. 9th) <strong>360€/week</strong></li>
+            <li class="price">Mid season (jun. 10th - jun. 30th) <strong>465€/week</strong></li>
+            <li class="price">Season (jul. 1st - jul. 14th) <strong>570€/week</strong></li>
+            <li class="price">High Season (aug. 19th - sept. 1st) <strong>570€/week</strong></li>
+          </ul>
+        </div>
+        <div class="flat-calendar" id="calendar">
         </div>
       </div>
     </div>

@@ -17,8 +17,14 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# MONEY
+gem 'money-rails'
+
+
 # CALENDAR
-gem "simple_calendar", "~> 2.0"
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'jquery-ui-rails'
 
 # IMAGE UPLOAD
 gem 'cloudinary', '1.1.0'

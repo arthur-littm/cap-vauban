@@ -16,10 +16,19 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.flat = @flat
+    @booking.price_cents = booking_price(@booking)
     if @booking.save
-      redirect_to bookings_path(@booking)
+      redirect_to booking_path(@booking)
     else
       raise
+    end
+  end
+
+  def booking_price(booking)
+    if booking.start_date < Date.parse('3rd May')
+      return 300
+    elsif booking.start_date > Date.parse('3rd May')
+      return 400
     end
   end
 

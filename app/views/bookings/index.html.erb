@@ -9,11 +9,12 @@
     <div class='product-body'>
       <h3><%= booking.flat.title %></h3>
       <p><%= booking.flat.description %></p>
+      <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
     </div>
     <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <li><a href=""><i class="fa fa-heart"></i></a></li>
-      <li><a href=""><i class="fa fa-share"></i></a></li>
-      <li><a href=""><i class="fa fa-star"></i></a></li>
+      <%= link_to booking_path(booking) do %>
+      <li><i class="fa fa-info-circle"></i></li>
+      <% end %>
     </ul>
   </div>
   <% end %>

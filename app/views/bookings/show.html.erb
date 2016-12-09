@@ -1,2 +1,20 @@
-<h1>Booking#show</h1>
-<p>Find me in app/views/booking/show.html.erb</p>
+<div class="container">
+  <h1>Your booking request</h1>
+  <div class="product">
+    <div class='product-upvote'>
+      <div><i class="fa fa-calendar"></i></div>
+      <div class='product-count'><%= @booking.start_date %></div>
+    </div>
+    <%= cl_image_tag @booking.flat.banner_photo.path, class: "product-image hidden-xs"  %>
+    <div class='product-body'>
+      <h3><%= @booking.flat.title %></h3>
+      <p><%= @booking.flat.description %></p>
+      <p>Amount: <%= humanized_money_with_symbol(@booking.price_cents) %></p>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <%= link_to flat_path(@booking.flat) do %>
+      <li><i class="fa fa-share"></i></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

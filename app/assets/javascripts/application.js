@@ -5,3 +5,13 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require_tree .
+//= require moment
+//= require fullcalendar
+//= require jquery-ui
+
+
+$('#calendar').fullCalendar({});
+
+$(function() {
+  $('.datepicker').datepicker();
+});
