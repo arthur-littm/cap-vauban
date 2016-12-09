@@ -11,7 +11,3 @@
 
 
 $('#calendar').fullCalendar({});
-
-$(function() {
-  $('.datepicker').datepicker();
-});

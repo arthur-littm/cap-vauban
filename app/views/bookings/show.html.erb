@@ -1,19 +1,20 @@
 <div class="container">
   <h1>Your booking request</h1>
-  <div class="product">
-    <div class='product-upvote'>
-      <div><i class="fa fa-calendar"></i></div>
-      <div class='product-count'><%= @booking.start_date %></div>
-    </div>
-    <%= cl_image_tag @booking.flat.banner_photo.path, class: "product-image hidden-xs"  %>
-    <div class='product-body'>
+  <div class="booking">
+    <%= cl_image_tag @booking.flat.banner_photo.path, class: "booking-image"  %>
+    <div class='booking-body'>
       <h3><%= @booking.flat.title %></h3>
       <p><%= @booking.flat.description %></p>
-      <p>Amount: <%= humanized_money_with_symbol(@booking.price_cents) %></p>
+      <h2>Amount: <%= humanized_money_with_symbol(@booking.price_cents) %></h2>
+      <h2><i class="fa fa-calendar"></i> <%= @booking.start_date %> to <%= @booking.end_date %></h2>
+      <p>Total nights: <%= (@booking.end_date - @booking.start_date).to_i %></p>
     </div>
-    <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <%= link_to flat_path(@booking.flat) do %>
-      <li><i class="fa fa-share"></i></li>
+    <ul class="list-inline booking-controls">
+      <%= link_to booking_path(@booking), method: :delete do %>
+      <li><i class="fa fa-times"></i></li>
+      <% end %>
+      <%= link_to bookings_path do %>
+      <li><i class="fa fa-check"></i></li>
       <% end %>
     </ul>
   </div>

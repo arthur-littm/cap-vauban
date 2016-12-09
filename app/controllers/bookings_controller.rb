@@ -25,20 +25,51 @@ class BookingsController < ApplicationController
   end
 
   def booking_price(booking)
-    if booking.start_date < Date.parse('3rd May')
-      return 300
-    elsif booking.start_date > Date.parse('3rd May')
-      return 400
+    case
+    when booking.start_date.month == 1
+      100
+    when booking.start_date.month == 2
+      200
+    when booking.start_date.month == 3
+      300
+    when booking.start_date.month == 4
+      400
+    when booking.start_date.month == 5
+      500
+    when booking.start_date.month == 6
+      600
+    when booking.start_date.month == 7
+      700
+    when booking.start_date.month == 8
+      800
+    when booking.start_date.month == 9
+      900
+    when booking.start_date.month == 10
+      1000
+    when booking.start_date.month == 11
+      1100
+    when booking.start_date.month == 12
+      1200
     end
   end
 
   def edit
+    @booking = Booking.find(params[:id])
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      redirect_to booking_path(@booking), notice: "Booking successfully updated"
+    else
+      redirect_to booking_path(@booking), alert: "Something went wrong"
+    end
   end
 
   def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path, notice: "Booking successfully cancelled"
   end
 
   private

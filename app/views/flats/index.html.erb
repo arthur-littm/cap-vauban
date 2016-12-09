@@ -29,3 +29,15 @@
 
 <div class="container" id="calendar">
 </div>
+
+<%= content_for(:after_js) do %>
+<script>
+  $('#calendar').fullCalendar({
+    header: {
+      left: 'today,month,agendaWeek,agendaDay',
+      center: 'title',
+      right: 'prev,next'
+    }
+  });
+</script>
+<% end %>
