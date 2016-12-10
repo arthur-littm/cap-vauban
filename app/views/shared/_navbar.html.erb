@@ -12,13 +12,14 @@
 
     <%= link_to "Flats", flats_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "My bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
+    <%= link_to t(".sign_out", default: "Log out"), destroy_user_session_path, class: "navbar-wagon-item navbar-wagon-link-danger" %>
 
     <% else %>
 
     <!-- Login text link -->
     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to t(".sign_up", default: "Signup"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
 
     <% end %>
 
@@ -31,7 +32,10 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><a href="#">Some mobile link</a></li>
         <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li><%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>

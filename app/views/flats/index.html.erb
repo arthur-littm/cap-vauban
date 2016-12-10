@@ -31,13 +31,24 @@
 </div>
 
 <%= content_for(:after_js) do %>
-  <script>
-    $('#calendar').fullCalendar({
-      events: [
-      {
-        title  : 'event1',
-        start  : '2016-12-01'
-      }]
+<script>
+  var bookings = Booking.all,
+  var formattedEventData = [],
+  k;
+
+  for (var k = 0; k < bookings.length; k += 1) {
+    formattedEventData.push({
+      title: bookings[k][3].title,
+      start: bookings[k][1],
+      end: bookings[k][2]
     });
-  </script>
+  }
+
+
+  $('#calendar').fullCalendar({
+    events: formattedEventData,
+    color: 'blue',
+    textColor: 'white'
+  });
+</script>
 <% end %>

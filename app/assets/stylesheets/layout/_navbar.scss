@@ -44,6 +44,17 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
+  color: #1C90D7;
+  text-decoration: none;
+}
+
+.navbar-wagon-link-danger {
+  border-left: 0.5px solid #616668;
+  color: #616668;
+  font-size: 14px;
+}
+
+.navbar-wagon-link-danger:hover {
   color: #da552f;
   text-decoration: none;
 }
