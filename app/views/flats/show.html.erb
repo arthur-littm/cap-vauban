@@ -24,8 +24,13 @@
         <h2>Book it</h2>
         <% if user_signed_in? %>
         <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
-        <%= f.input :start_date, placeholder: "From", as: :date, label: false, required: true %>
-        <%= f.input :end_date, placeholder: "Until", as: :date, label: false, required: true %>
+
+        <div class="input-daterange input-group" id="datepicker">
+          <input name="booking[start_date]" type="text" class='datepicker input-sm form-control' placeholder="From">
+          <span class="input-group-addon">to</span>
+          <input name="booking[end_date]" type="text" class='datepicker input-sm form-control' placeholder="Until">
+        </div>
+
         <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
         <p>Book</p>
         <% end %>
@@ -45,7 +50,7 @@
             <li class="price">High Season (aug. 19th - sept. 1st) <strong>570€/week</strong></li>
           </ul>
         </div>
-        <div class="flat-calendar" id="calendar">
+        <div class="flat-calendar " id="flat_calendar">
         </div>
       </div>
     </div>
@@ -54,3 +59,17 @@
   <%= link_to "EDIT", edit_flat_path(@flat) %>
   <% end %>
 </div>
+
+<%= content_for(:after_js) do %>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    $('.datepicker .input-daterange').datepicker({
+      format: "yyyy-mm-dd",
+      daysOfWeekDisabled: "0,1,2,3,4,5",
+      daysOfWeekHighlighted: "6",
+      todayHighlight: true
+    });
+  });
+</script>
+<% end %>

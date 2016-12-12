@@ -5,7 +5,11 @@
       <div><i class="fa fa-calendar"></i></div>
       <div class='product-count'><%= booking.start_date %></div>
     </div>
-    <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs"  %>
+    <% if booking.flat.banner_photo %>
+    <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+    <% else %>
+    <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+    <% end %>
     <div class='product-body'>
       <h3><%= booking.flat.title %></h3>
       <p><%= booking.flat.description %></p>

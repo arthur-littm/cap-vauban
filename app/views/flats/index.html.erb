@@ -32,23 +32,17 @@
 
 <%= content_for(:after_js) do %>
 <script>
-  var bookings = Booking.all,
-  var formattedEventData = [],
-  k;
-
-  for (var k = 0; k < bookings.length; k += 1) {
-    formattedEventData.push({
-      title: bookings[k][3].title,
-      start: bookings[k][1],
-      end: bookings[k][2]
-    });
-  }
-
 
   $('#calendar').fullCalendar({
-    events: formattedEventData,
-    color: 'blue',
-    textColor: 'white'
+    events: [
+    <% @bookings.each do |booking| %>
+    {
+      title: 'Booked - <%= booking.flat.title %>',
+      start: '<%= booking.start_date %>',
+      end: '<%= booking.end_date %>'
+    },
+    <% end %>
+    ],
   });
 </script>
 <% end %>

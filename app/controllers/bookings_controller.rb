@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.flat = @flat
-    @booking.price_cents = booking_price(@booking)
+    # @booking.price_cents = booking_price(@booking)
     if @booking.save
       redirect_to booking_path(@booking)
     else

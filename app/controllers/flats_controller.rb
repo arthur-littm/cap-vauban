@@ -3,6 +3,7 @@ class FlatsController < ApplicationController
 
   def index
     @flats = Flat.all
+    @bookings = Booking.all
   end
 
   def show

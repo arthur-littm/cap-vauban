@@ -25,6 +25,8 @@ gem 'money-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-ui-rails'
+gem 'bootstrap-datepicker-rails'
+
 
 # IMAGE UPLOAD
 gem 'cloudinary', '1.1.0'

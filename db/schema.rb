@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20161209114644) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date     "start_date"
-    t.date     "end_date"
+    t.string   "start_date"
+    t.string   "end_date"
     t.integer  "flat_id"
     t.integer  "user_id"
     t.datetime "created_at",              null: false
