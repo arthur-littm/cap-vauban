@@ -5,9 +5,9 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.new_booking.subject
   #
-  def new_booking(user)
+  def new_booking(user, booking)
     @user = user  # Instance variable => available in view
-
+    @booking = booking
     mail(to: @user.email, subject: 'Cap Vauban - Booking')
     # This will render a view in `app/views/user_mailer`!
   end

@@ -11,7 +11,7 @@ class Booking < ApplicationRecord
   private
 
   def send_new_booking_mail
-    UserMailer.new_booking(self.user).deliver_now
-    # UserMailer.new_booking(self.user).deliver_later(wait: 15.minutes)
+    UserMailer.new_booking(self.user, self).deliver_now
+    # UserMailer.new_booking(self.user).deliver_later(wait: 5.minutes)
   end
 end

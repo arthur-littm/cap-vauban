@@ -1,0 +1,79 @@
+.login-container {
+  p {
+    font-size: 40px;
+    margin: 30px auto;
+    font-weight: 100;
+    letter-spacing: -2px;
+    color: white;
+  }
+  img {
+    width: 300px;
+    margin-bottom: 10px;
+  }
+}
+
+.gray-label {
+  color: gray;
+}
+
+.login-content {
+  margin: 0 auto;
+  background-color: #fcfcfc;
+  width: 500px;
+  color: black;
+  border-radius: 5px;
+  padding: 15px;
+  h2 {
+    margin: 20px auto ;
+  }
+}
+
+.devise-button {
+  background-color: #008DD3 !important;
+  border: 0.5px solid #0F7EBD !important;
+}
+
+.devise-button:hover {
+  background-color: #0E78B4 !important;
+  border: 0.5px solid #0C679A !important;
+}
+
+.signup-content {
+  margin: 0 auto;
+  background-color: #fcfcfc;
+  width:500px;
+  color: black;
+  border-radius: 5px;
+  padding: 15px;
+  h2 {
+    margin: 20px auto ;
+  }
+}
+
+.facebook-button {
+  text-align: center;
+  width: 100% !important;
+  font-weight: 100;
+}
+
+.centered-form{
+  margin-top: 60px;
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.20);
+}
+
+.checkbox {
+  color: black;
+  margin-top: 3px;
+}
+
+.form-group .placeholder {
+  font-size: 15px !important;
+}
+#signup-box {
+box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.20);
+}
+

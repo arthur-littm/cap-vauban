@@ -1,5 +1,27 @@
-<h1>We recieved your booking request</h1>
+<p>Bonjour,</p>
 
-<p>
-  <%= @user.email %>, find me in app/views/user_mailer/new_booking.html.erb
-</p>
+<p>Merci de l'intérêt que vous portez à notre appartement "<%= @booking.flat.title %>"
+Il est encore libre à cette période au prix de <%= humanized_money_with_symbol(@booking.price_cents) %>, pour <%= @booking.flat.capacity %> personnes, charges comprises (eau + électricité) avec à disposition un garage fermé avec 2 vélos
+et internet wifi illimité. Le linge de maison (draps/serviettes) est offert.
+L'arrivée est prévue entre 14h00 et 18h00, une arrivée tardive pourra éventuellement
+être organisée sous réserve de disponibilité, moyennant un supplément de 30€
+jusqu'à 20h00 et 50€ jusqu'à 22h00.</p>
+
+<p>Nos locations se font du samedi au samedi, néanmoins il est possible d'arriver le
+dimanche mais avec un supplément de 30€ et en fonction de la disponibilité de la
+personne chargée de l'accueil.</p>
+
+<p>Nous pouvons aussi mettre à votre disposition un lit parapluie ainsi qu'une chaise
+haute en fonction de l'âge de votre enfant.</p>
+
+<p>Pour réserver il vous suffit de m'envoyer vos coordonnées (nom, prénom, adresse et
+numéro de portable) afin que je remplisse le contrat de location et que je vous l'envoie
+pour signature à me retourner scanné par email.</p>
+
+<p>Un acompte de 25% sera à verser via virement bancaire pour bloquer la semaine, le
+solde un mois avant l'arrivée.</p>
+<p>Le ménage de fin de séjour est facturé 50€ et sera à payer en espèces à l’arrivée.</p>
+
+<p>En espérant avoir le plaisir de vous accueillir prochainement à Antibes.</p>
+<p>Très cordialement</p>
+<p>Françoise &amp; François Littmann</p>
