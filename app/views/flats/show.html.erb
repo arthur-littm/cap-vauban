@@ -50,7 +50,7 @@
             <li class="price">High Season (aug. 19th - sept. 1st) <strong>570€/week</strong></li>
           </ul>
         </div>
-        <div class="flat-calendar " id="flat_calendar">
+        <div class="flat-calendar" id="flat-calendar">
         </div>
       </div>
     </div>
@@ -64,12 +64,27 @@
 <script type="text/javascript">
 
   $(document).ready(function(){
-    $('.datepicker .input-daterange').datepicker({
+    $('.datepicker').datepicker({
       format: "yyyy-mm-dd",
       daysOfWeekDisabled: "0,1,2,3,4,5",
       daysOfWeekHighlighted: "6",
       todayHighlight: true
     });
   });
+
+  $('.flat-calendar').fullCalendar({
+    <% if @bookings != nil %>
+    events: [
+    <% @bookings.each do |booking| %>
+    {
+      title: 'Booked',
+      start: '<%= booking.start_date %>',
+      end: '<%= booking.end_date %>'
+    },
+    <% end %>
+    ],
+    <% end %>
+  });
+
 </script>
 <% end %>

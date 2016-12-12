@@ -8,6 +8,7 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+    @bookings = Booking.where(flat: @flat)
   end
 
   def edit

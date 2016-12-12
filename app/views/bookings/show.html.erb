@@ -2,9 +2,9 @@
   <h1>Your booking request</h1>
   <div class="booking">
   <% if @booking.flat.banner_photo %>
-    <% cl_image_tag @booking.flat.banner_photo.path, class: "booking-image" %>
+    <%= cl_image_tag @booking.flat.banner_photo.path, class: "booking-image" %>
     <% else %>
-    <% image_tag "background.jpg", class: "booking-image" %>
+    <%= image_tag "background.jpg", class: "booking-image" %>
     <% end %>
     <div class='booking-body'>
       <h3><%= @booking.flat.title %></h3>

@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.flat = @flat
-    # @booking.price_cents = booking_price(@booking)
+    @booking.price_cents = booking_price(@booking)
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -25,32 +25,41 @@ class BookingsController < ApplicationController
   end
 
   def booking_price(booking)
+    # Date format -> yyyy-mm-dd
+    start_d = Date.parse(booking.start_date)
+    end_d = Date.parse(booking.end_date)
+
+    # start_d = booking.start_date.split("-")
+    # end_date_array = booking.start_date.split("-")
     case
-    when booking.start_date.month == 1
-      100
-    when booking.start_date.month == 2
-      200
-    when booking.start_date.month == 3
-      300
-    when booking.start_date.month == 4
-      400
-    when booking.start_date.month == 5
-      500
-    when booking.start_date.month == 6
-      600
-    when booking.start_date.month == 7
-      700
-    when booking.start_date.month == 8
-      800
-    when booking.start_date.month == 9
-      900
-    when booking.start_date.month == 10
-      1000
-    when booking.start_date.month == 11
-      1100
-    when booking.start_date.month == 12
-      1200
+    when start_d.month == 12 && start_d.day >= 23
+      week = 500
+    when (start_d.month == 11 && start_d.day >= 4) || (start_d.month == 12 && start_d.day >= 1)
+      week = 350
+    when (start_d.month == 9 && start_d.day >= 16) || (start_d.month >= 10 && start_d.day >= 1)
+      week = 500
+    when start_d.month == 9 && start_d.day >= 2
+      week = 650
+    when (start_d.month == 8 && start_d.day >= 19) || (start_d.month == 9 && start_d.day >= 1)
+      week = 800
+    when (start_d.month == 7 && start_d.day >= 15) || (start_d.month == 8 && start_d.day >= 1)
+      week = 950
+    when start_d.month == 7 && start_d.day >= 1
+      week = 800
+    when start_d.month == 6 && start_d.day >= 10
+      week = 650
+    when (start_d.month == 4 && start_d.day >= 1) || (start_d.month == 5 && start_d.day >= 1) || (start_d.month == 6 && start_d.day >= 3)
+      week = 500
+    when (start_d.month == 1 && start_d.day >= 7) || (start_d.month == 2 && start_d.day >= 1) || (start_d.month == 3 && start_d.day >= 1)
+      week = 350
+    when (start_d.month == 12 && start_d.day >= 31) || (start_d.month == 1 && start_d.day >= 1)
+      week = 500
     end
+
+    multiplier = end_d.cweek - start_d.cweek
+
+    return (multiplier * week)
+
   end
 
   def edit
