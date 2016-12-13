@@ -1,6 +1,26 @@
 <div class="footer-container">
-  <ul class= "list-inline">
-    <li><a href="#"><i class="fa fa-facebook-official hidden-xs bg-facebook" aria-hidden="true"></i></a></li>
-    <li><a href="mailto:francois@cap-vauban.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-  </ul>
+
+  <div class="footer-left text-center hidden-xs">
+  <h4>Our flats</h4>
+    <ul class="list-inline">
+      <% Flat.all.each do |flat| %>
+      <li><%= link_to flat_path(flat) do %>
+      <i class="fa fa-home" aria-hidden="true"></i><%= flat.title %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="footer-middle text-center">
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="mailto:francois@cap-vauban.com"><i class="fa fa-envelope" aria-hidden="true"></i>Email us</a></li>
+    </ul>
+  </div>
+  <div class='footer-right text-center'>
+    <h4>Need a website ?</h4>
+    <ul class="list-inline">
+      <li><a href="mailto:arthur.littmann@gmail.com"><i class="fa fa-code" aria-hidden="true"></i>Contact developer!</a></li>
+    </ul>
+  </div>
 </div>

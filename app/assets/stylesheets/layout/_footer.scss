@@ -1,29 +1,83 @@
 .footer-container {
-  background-color: #222735;
+  background-color: #2F323A;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 20px 30px 0px 0px;
-  align-items: baseline;
+  color: #E8EEF2;
+  padding: 10px 0px 15px 0px;
+  h4 {
+    margin-top: 10px;
+    color: #5D737E;
+    font-size: 17px;
+  }
+}
+
+.footer-middle {
+  width: 30%;
   list-style-type: none;
-  i {
-    font-size: 30px;
-    margin: 10px 20px;
+  font-size: 15px;
+  font-weight: 100;
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  a {
     color: #E8EEF2;
+    text-decoration: none;
+    i {
+      margin-right: 10px;
+    }
   }
-  .fa-envelope:hover {
-    color: #14A1A4;
-    transition-duration: 1s;
+  a:hover {
+    color: #008DD3;
+    transition-duration: .5s;
   }
-  .bg-facebook:hover {
-    color: #4067A9;
-    transition-duration: 1s;
+}
+
+.footer-left {
+  width: 30%;
+  list-style-type: none;
+  font-size: 15px;
+  font-weight: 100;
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      margin: 0 10px;
+    }
   }
-   .bg-github-footer:hover {
-    color: #657C8A;
-    transition-duration: 1s;
+  a {
+    color: #E8EEF2;
+    text-decoration: none;
+    i {
+      margin-right: 10px;
+    }
   }
-  li {
-    margin: 10px auto;
+  a:hover {
+    color: #008DD3;
+    transition-duration: .5s;
+  }
+}
+
+
+.footer-right {
+  width: 30%;
+  list-style-type: none;
+  font-size: 15px;
+  font-weight: 100;
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  a {
+    color: #E8EEF2;
+    text-decoration: none;
+    i {
+      margin-right: 10px;
+    }
+  }
+  a:hover {
+    color: #008DD3;
+    transition-duration: .5s;
   }
 }
