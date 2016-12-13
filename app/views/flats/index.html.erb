@@ -1,32 +1,70 @@
-<div class="cards-container">
-  <% @flats.each do |flat| %>
-  <div class="card">
-    <% if flat.banner_photo %>
-    <% image = cl_image_path flat.banner_photo.path, crop: :fill %>
-    <% else %>
-    <% image = image_path "background.jpg" %>
-    <% end %>
-    <div class="card-image" style="background-image: url(<%= image %>);">
-    </div>
-    <div class="card-info">
-      <p><%= flat.description %></p>
-      <ul>
-        <li><i class="fa fa-users" aria-hidden="true"></i> <%= flat.capacity %></li>
-        <li><i class="fa fa-bath" aria-hidden="true"></i> <%= flat.bathroom %></li>
-        <li><i class="fa fa-male" aria-hidden="true"></i><i class="fa fa-female" aria-hidden="true"></i> <%= flat.toilet %></li>
-      </ul>
-    </div>
-    <div class="card-title">
-      <h3><%= flat.title %></h3>
-    </div>
-    <div class="card-date">
-      <p>2016</p>
-    </div>
-    <%= link_to "", flat_path(flat), class: "card-link" %>
+<div class="container-fluid text-center" style="background-color: aliceblue; ">
+  <div class="flats-instructions">
+    <h4>Select one of our appartements below to make a booking request</h4>
   </div>
-  <% end %>
-</div>
+  <div class="cards-container">
+    <% @flats.each do |flat| %>
+    <div class="card">
+      <% if flat.banner_photo %>
+      <% image = cl_image_path flat.banner_photo.path, crop: :fill %>
+      <% else %>
+      <% image = image_path "background.jpg" %>
+      <% end %>
+      <div class="card-image" style="background-image: url(<%= image %>);">
+      </div>
+      <div card-content>
+        <div class="card-title">
+          <h3><%= flat.title %></h3>
+        </div>
+        <div class="card-info">
+          <div class="row">
+            <div class="col-xs-12">
+              <h4><%= flat.description %></h4>
+              <h4>From <%= humanized_money_with_symbol(350) %>/week</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-3">
+              <p><strong>Flat:</strong></p>
+            </div>
+            <div class="col-xs-4">
+              <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= flat.bedrooms %> Bedroom</p>
+              <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= flat.bathroom %> Bathroom</p>
+              <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= flat.toilet %> Toilet</p>
+              <p><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Balcony</p>
+            </div>
+            <div class="col-xs-4">
+              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Kitchen</p>
+              <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> Living room</p>
+              <p><i class="fa fa-car fa-fw" aria-hidden="true"></i> Garage</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-3">
+              <p><strong>Amenities:</strong></p>
+            </div>
+            <div class="col-xs-4">
+              <p><i class="fa fa-wifi fa-fw" aria-hidden="true"></i> WI-FI</p>
+              <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> TV</p>
+              <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= flat.beds %> Beds</p>
+            </div>
+            <div class="col-xs-4">
+              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Oven</p>
+              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Dishwasher</p>
+              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Fridge</p>
+            </div>
+          </div>
+        </div>
 
+        <div class="card-date">
+          <p><i class="fa fa-users" aria-hidden="true"></i> - Up to <strong><%= flat.capacity %></strong> people</p>
+        </div>
+        <%= link_to "", flat_path(flat), class: "card-link" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 <div class="container" id="calendar">
 </div>
 
