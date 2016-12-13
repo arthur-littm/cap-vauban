@@ -61,9 +61,13 @@
 
 .card:hover {
   box-shadow: 1px 1px 6px 0px #96A6C7;
-  .card-title h3 {
-    font-weight: 400;
-    transition: .5s;
+  .card-title {
+    margin: 0;
+    h3 {
+      font-weight: 400;
+      font-size: 30px;
+      transition: .5s;
+    }
   }
   .card-date {
     display: none;
