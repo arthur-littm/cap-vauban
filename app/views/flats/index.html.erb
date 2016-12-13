@@ -19,8 +19,10 @@
         <div class="card-info">
           <div class="row">
             <div class="col-xs-12">
-              <h4><%= flat.description %></h4>
-              <h4>From <%= humanized_money_with_symbol(350) %>/week</h4>
+              <div class="card-info-description">
+                <h4><%= flat.description %></h4>
+                <h4>From <%= humanized_money_with_symbol(350) %>/week</h4>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -64,14 +66,35 @@
     </div>
     <% end %>
   </div>
-</div>
-<div class="container" id="calendar">
+  <div class="calendar-container" id="calendar">
+  </div>
 </div>
 
 <%= content_for(:after_js) do %>
 <script>
 
   $('#calendar').fullCalendar({
+    viewRender: function(view,element) {
+      var now = new Date();
+      var end = new Date();
+      end.setMonth(now.getMonth() + 12); //Adjust as needed
+
+      if ( end < view.end) {
+        $("#calendar .fc-next-button").hide();
+        return false;
+      }
+      else {
+        $("#calendar .fc-next-button").show();
+      }
+
+      if ( view.start < now) {
+        $("#calendar .fc-prev-button").hide();
+        return false;
+      }
+      else {
+        $("#calendar .fc-prev-button").show();
+      }
+    },
     events: [
     <% @bookings.each do |booking| %>
     {
