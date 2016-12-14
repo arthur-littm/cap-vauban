@@ -21,6 +21,8 @@ gem 'autoprefixer-rails'
 # MONEY
 gem 'money-rails'
 
+gem 'fancybox2-rails'
+
 # CALENDAR
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'

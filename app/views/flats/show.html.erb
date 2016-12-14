@@ -15,11 +15,11 @@
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
-            <div class="item active">
+            <div class="item active carousel-image">
               <%= cl_image_tag @flat.banner_photo.path %>
             </div>
             <% @flat.carousel_photos.each do |photo| %>
-            <div class="item">
+            <div class="item carousel-image">
               <%= cl_image_tag photo.path %>
             </div>
             <% end %>
@@ -88,7 +88,17 @@
           </div>
 
           <div role="tabpanel" class="tab-pane" id="pictures">
-
+            <div class="row">
+              <div class='list-group gallery'>
+                <% @flat.photos.each do |photo| %>
+                  <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                    <a class="thumbnail fancybox" rel="ligthbox" href="<%= cl_image_path photo %>">
+                      <%= cl_image_tag photo.path, class: "img-responsive" %>
+                    </a>
+                  </div>
+                <% end %>
+              </div> <!-- list-group / end -->
+            </div> <!-- row / end -->
           </div>
 
           <div role="tabpanel" class="tab-pane" id="calendar">
@@ -174,6 +184,8 @@
     });
   });
 
+  $(".fancybox").fancybox({
+  });
 
   $('#flat-calendar').fullCalendar({
     viewRender: function(view,element) {

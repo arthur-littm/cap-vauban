@@ -6,6 +6,7 @@
 //= require attachinary
 //= require moment
 //= require fullcalendar
+//= require fancybox
 //= require jquery-ui
 //= require bootstrap-datepicker
 //= require_tree .
