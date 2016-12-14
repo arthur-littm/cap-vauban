@@ -91,7 +91,7 @@
               <div class='list-group gallery'>
                 <% @flat.photos.each do |photo| %>
                 <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                <a class="thumbnail fancybox" rel="gallery" href="<%= cl_image_path photo.path, width: 800, height: 600, crop: :fill %>">
+                  <a class="thumbnail fancybox" rel="gallery" href="<%= cl_image_path photo.path, width: 800, height: 600, crop: :fill %>">
                     <%= cl_image_tag photo.path, class: "img-responsive" %>
                   </a>
                 </div>
@@ -134,9 +134,9 @@
         <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
         <div class="text-center">
           <div class="input-daterange input-group" id="datepicker">
-            <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control' placeholder="From">
+            <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="From">
             <span class="input-group-addon">to</span>
-            <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control' placeholder="Until">
+            <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
           </div>
 
           <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
@@ -154,9 +154,9 @@
         <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
         <div class="text-center">
           <div class="input-daterange input-group" id="datepicker">
-            <input name="booking[start_date]" type="text" class='datepicker input-sm form-control' placeholder="From">
+          <input name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="From">
             <span class="input-group-addon">to</span>
-            <input name="booking[end_date]" type="text" class='datepicker input-sm form-control' placeholder="Until">
+            <input name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
           </div>
 
           <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
@@ -176,11 +176,40 @@
 <script type="text/javascript">
 
   $(document).ready(function(){
-    $('.datepicker').datepicker({
+
+    $('.datepicker.from').datepicker({
       format: "yyyy-mm-dd",
       daysOfWeekDisabled: "0,1,2,3,4,5",
       daysOfWeekHighlighted: "6",
-      todayHighlight: true
+      todayHighlight: true,
+      datesDisabled: [
+      <% @bookings.each do |booking| %>
+      '<%= booking.start_date %>',
+      <% weeks = (booking.end_date.to_date - booking.start_date.to_date)/7 %>
+      <% date = booking.start_date.to_date %>
+      <% (weeks.to_i - 1).times do %>
+      <% date += 7.day %>
+      '<%= date %>',
+      <% end %>
+      <% end %>
+      ]
+    });
+    $('.datepicker.until').datepicker({
+      format: "yyyy-mm-dd",
+      daysOfWeekDisabled: "0,1,2,3,4,5",
+      daysOfWeekHighlighted: "6",
+      todayHighlight: true,
+      datesDisabled: [
+      <% @bookings.each do |booking| %>
+      '<%= booking.start_date.to_date + 7.day %>',
+      <% weeks = (booking.end_date.to_date - booking.start_date.to_date)/7 %>
+      <% date = booking.start_date.to_date + 7.day %>
+      <% (weeks.to_i - 1).times do %>
+      <% date += 7.day %>
+      '<%= date %>',
+      <% end %>
+      <% end %>
+      ]
     });
   });
 
@@ -221,7 +250,5 @@
     <% end %>
     ],
   });
-
-
 </script>
 <% end %>
