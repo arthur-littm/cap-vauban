@@ -21,9 +21,6 @@ gem 'autoprefixer-rails'
 # MONEY
 gem 'money-rails'
 
-# FLAT CAROUSEL
-gem "jquery-slick-rails"
-
 # CALENDAR
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
