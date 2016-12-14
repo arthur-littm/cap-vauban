@@ -51,7 +51,6 @@
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="description">
             <div class="media-section">
-              <h2>Description</h2>
               <p><%= @flat.description %></p>
               <div class="row">
                 <div class="col-xs-3">
@@ -91,17 +90,18 @@
             <div class="row">
               <div class='list-group gallery'>
                 <% @flat.photos.each do |photo| %>
-                  <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                    <a class="thumbnail fancybox" rel="ligthbox" href="<%= cl_image_path photo %>">
-                      <%= cl_image_tag photo.path, class: "img-responsive" %>
-                    </a>
-                  </div>
+                <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                <a class="thumbnail fancybox" rel="ligthbox" href="<%= cl_image_path photo.path, width: 800, height: 600, crop: :fill %>">
+                    <%= cl_image_tag photo.path, class: "img-responsive" %>
+                  </a>
+                </div>
                 <% end %>
               </div> <!-- list-group / end -->
             </div> <!-- row / end -->
           </div>
 
-          <div role="tabpanel" class="tab-pane" id="calendar">
+          <div role="tabpanel" class="tab-pane flat-calendar" id="calendar">
+            <h4>Click to select a month</h4>
             <div class="flat-calendar" id="flat-calendar">
             </div>
           </div>
@@ -184,7 +184,10 @@
     });
   });
 
-  $(".fancybox").fancybox({
+  $('.fancybox').fancybox({
+    padding : 0,
+    openEffect  : 'elastic',
+    closeBtn: true
   });
 
   $('#flat-calendar').fullCalendar({
