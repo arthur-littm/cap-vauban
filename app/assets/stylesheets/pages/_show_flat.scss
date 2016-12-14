@@ -1,28 +1,37 @@
 .media {
-  display: flex;
 }
 .media-body {
-  flex: 1 1 auto;
   padding: 20px;
+  h2 {
+    margin-top: 5px;
+  }
 }
 .media-body img {
   width: 100%;
 }
-.media-aside {
-  margin: 25px auto;
-  min-height: 40vh;
-  flex: 0 0 400px;
-  padding: 30px;
-  align-self: stretch;
-  background: #F8F7F7;
-  border-left: 1px solid #f0efef;
+
+.flat-intro {
+  margin-bottom: 20px;
 }
-.media-section {
-  margin: 40px auto;
+.booking-action {
+  padding: 20px 10px;
+  background-color: aliceblue;
+  border: 0.5px solid #e7edf3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .btn {
+    margin: 10px auto;
+    width: 40%;
+  }
 }
-.media-section:first-child {
-  margin-top: 0;
+
+.fixed-action {
+  position: fixed;
+  top: 85px;
+  right: 50px;
+  width: 355px;
 }
-.media-section:last-child {
-  margin-bottom: 0;
-}
+
+

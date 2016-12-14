@@ -8,5 +8,6 @@
 //= require fullcalendar
 //= require jquery-ui
 //= require bootstrap-datepicker
+//= require jquery.slick
 //= require_tree .
 

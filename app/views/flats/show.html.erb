@@ -1,63 +1,138 @@
-<div class="container">
-  <div class="media">
-    <div class="media-body">
-      <div class="media-section">
+<div class="container-fluid">
+  <div class="row media-body">
+    <div class="col-xs-12 col-md-8 col-sm-8">
+      <div class="flat-intro">
         <h2><%= @flat.title %></h2>
-        <% if @flat.banner_photo %>
-        <%= cl_image_tag @flat.banner_photo.path, crop: :fill %>
-        <% else %>
-        <%= image_tag "background.jpg" %>
-        <% end %>
+        <div class="photos-carousel" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+          <div><img src="<%= cl_image_path @flat.banner_photo %>"> </div>
+          <% @flat.photos.each do |photo| %>
+          <div><img src="<%= cl_image_path photo %>"></div>
+          <% end %>
+        </div>
       </div>
-      <div class="media-section">
-        <h2>Description</h2>
-        <p><%= @flat.description %></p>
-        <ul>
-          <li>Sleeps <%= @flat.capacity %> people</li>
-          <li><%= @flat.bathroom %> bathroom</li>
-          <li><%= @flat.toilet %> toilet</li>
+
+      <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
+          <li role="presentation"><a href="#pictures" aria-controls="profile" role="tab" data-toggle="tab">Pictures</a></li>
+          <li role="presentation"><a href="#calendar" aria-controls="profile" role="tab" data-toggle="tab">Calendar</a></li>
+          <li role="presentation"><a href="#prices" aria-controls="messages" role="tab" data-toggle="tab">Prices</a></li>
         </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="description">
+            <div class="media-section">
+              <h2>Description</h2>
+              <p><%= @flat.description %></p>
+              <div class="row">
+                <div class="col-xs-3">
+                  <p><strong>Flat:</strong></p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= @flat.bedrooms %> Bedroom</p>
+                  <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= @flat.bathroom %> Bathroom</p>
+                  <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= @flat.toilet %> Toilet</p>
+                  <p><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Balcony</p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Kitchen</p>
+                  <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> Living room</p>
+                  <p><i class="fa fa-car fa-fw" aria-hidden="true"></i> Garage</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-3">
+                  <p><strong>Amenities:</strong></p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-wifi fa-fw" aria-hidden="true"></i> WI-FI</p>
+                  <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> TV</p>
+                  <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= @flat.beds %> Beds</p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Oven</p>
+                  <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Dishwasher</p>
+                  <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Fridge</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="pictures">
+
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="calendar">
+            <div class="flat-calendar" id="flat-calendar">
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="prices">
+            <div class="flat-prices">
+              <h3>Seasonal prices</h3>
+              <ul>
+                <li class="price">Low season (oct. 1st - dec. 16th) <strong>300€/week</strong></li>
+                <li class="price">Mid season (dec. 17th - jan. 6th) <strong>430€/week</strong></li>
+                <li class="price">Low season (jan. 7th - mar. 31st) <strong>250€/week</strong></li>
+                <li class="price">Low season (apr. 1st - jun. 9th) <strong>360€/week</strong></li>
+                <li class="price">Mid season (jun. 10th - jun. 30th) <strong>465€/week</strong></li>
+                <li class="price">Season (jul. 1st - jul. 14th) <strong>570€/week</strong></li>
+                <li class="price">High Season (aug. 19th - sept. 1st) <strong>570€/week</strong></li>
+              </ul>
+            </div>
+            <% if user_signed_in? && current_user.admin %>
+            <%= link_to "Modifier", edit_flat_path(@flat), class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+
       </div>
     </div>
-    <div class="media-aside">
-      <div class="media-section">
-        <h2>Book it</h2>
+    <div class="col-xs-12 col-sm-4">
+      <div class="booking-action fixed-action hidden-xs">
+        <h2>Booking request</h2>
         <% if user_signed_in? %>
         <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
+        <div class="text-center">
+          <div class="input-daterange input-group" id="datepicker">
+            <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control' placeholder="From">
+            <span class="input-group-addon">to</span>
+            <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control' placeholder="Until">
+          </div>
 
-        <div class="input-daterange input-group" id="datepicker">
-          <input name="booking[start_date]" type="text" class='datepicker input-sm form-control' placeholder="From">
-          <span class="input-group-addon">to</span>
-          <input name="booking[end_date]" type="text" class='datepicker input-sm form-control' placeholder="Until">
+          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+          Book
+          <% end %>
+          <% end %>
+          <% else %>
+          <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+          <% end %>
         </div>
+      </div>
+      <div class="booking-action hidden-sm hidden-md hidden-lg">
+        <h2>Booking request</h2>
+        <% if user_signed_in? %>
+        <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
+        <div class="text-center">
+          <div class="input-daterange input-group" id="datepicker">
+            <input name="booking[start_date]" type="text" class='datepicker input-sm form-control' placeholder="From">
+            <span class="input-group-addon">to</span>
+            <input name="booking[end_date]" type="text" class='datepicker input-sm form-control' placeholder="Until">
+          </div>
 
-        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-        <p>Book</p>
-        <% end %>
-        <% end %>
-        <% else %>
-        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
-        <% end %>
-        <div class="flat-prices">
-          <h3>Seasonal prices</h3>
-          <ul>
-            <li class="price">Low season (oct. 1st - dec. 16th) <strong>300€/week</strong></li>
-            <li class="price">Mid season (dec. 17th - jan. 6th) <strong>430€/week</strong></li>
-            <li class="price">Low season (jan. 7th - mar. 31st) <strong>250€/week</strong></li>
-            <li class="price">Low season (apr. 1st - jun. 9th) <strong>360€/week</strong></li>
-            <li class="price">Mid season (jun. 10th - jun. 30th) <strong>465€/week</strong></li>
-            <li class="price">Season (jul. 1st - jul. 14th) <strong>570€/week</strong></li>
-            <li class="price">High Season (aug. 19th - sept. 1st) <strong>570€/week</strong></li>
-          </ul>
-        </div>
-        <div class="flat-calendar" id="flat-calendar">
+          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+          Book
+          <% end %>
+          <% end %>
+          <% else %>
+          <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-  <% if user_signed_in? && current_user.admin %>
-  <%= link_to "EDIT", edit_flat_path(@flat) %>
-  <% end %>
 </div>
 
 <%= content_for(:after_js) do %>
@@ -72,19 +147,43 @@
     });
   });
 
-  $('.flat-calendar').fullCalendar({
-    <% if @bookings != nil %>
+  $('.photos-carousel').slick({
+    setting-name: setting-value
+  });
+
+  $('#flat-calendar').fullCalendar({
+    viewRender: function(view,element) {
+      var now = new Date();
+      var end = new Date();
+      end.setMonth(now.getMonth() + 12); //Adjust as needed
+
+      if ( end < view.end) {
+        $("#calendar .fc-next-button").hide();
+        return false;
+      }
+      else {
+        $("#calendar .fc-next-button").show();
+      }
+
+      if ( view.start < now) {
+        $("#calendar .fc-prev-button").hide();
+        return false;
+      }
+      else {
+        $("#calendar .fc-prev-button").show();
+      }
+    },
     events: [
     <% @bookings.each do |booking| %>
     {
-      title: 'Booked',
+      title: 'Booked - <%= booking.flat.title %>',
       start: '<%= booking.start_date %>',
       end: '<%= booking.end_date %>'
     },
     <% end %>
     ],
-    <% end %>
   });
+
 
 </script>
 <% end %>

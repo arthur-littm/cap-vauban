@@ -7,6 +7,7 @@
   margin:20px;
   color: #2F323A;
   width: 500px;
+  min-width: 300px;
   height: 75vh;
   border-radius: 4px;
   position: relative;
@@ -17,6 +18,7 @@
     margin: 10px auto;
     text-align: center;
     h3 {
+      margin: 0;
       font-size: 40px;
       font-weight: 100;
       transition: .5s;
@@ -28,6 +30,9 @@
 
   }
   .card-info {
+    padding: 10px;
+    border: 0.5px solid rgba(197, 201, 201, 0.24);
+    background-color: whitesmoke;
     font-weight: 100;
     font-size: 14px;
     text-align: left;
@@ -36,19 +41,12 @@
     transition: .4s;
     p {
     }
-    .card-info-description {
-      padding: 10px;
-      border-radius: 5px;
-      border: 0.5px solid rgba(197, 201, 201, 0.24);
-      background-color: whitesmoke;
-      h4 {
-        font-size: 17px;
-        font-weight: 400;
-        text-align: left;
-        margin: 10px;
-      }
-      margin-bottom: 20px;
-    }
+  }
+  .card-button {
+    z-index: 5;
+    margin: 10px auto;
+    display: none;
+    width: 40%;
   }
   .card-image {
     background-size: cover !important;
@@ -62,7 +60,6 @@
 .card:hover {
   box-shadow: 1px 1px 6px 0px #96A6C7;
   .card-title {
-    margin: 0;
     h3 {
       font-weight: 400;
       font-size: 30px;
@@ -75,6 +72,10 @@
   .card-info {
     display: flex;
     flex-direction: column;
+    transition: .5s;
+  }
+  .card-button {
+    display: block;
     transition: .5s;
   }
   .card-image {

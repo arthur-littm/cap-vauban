@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 ruby '2.3.1'
 
 gem 'rails', '5.0.0.1'
@@ -20,6 +21,8 @@ gem 'autoprefixer-rails'
 # MONEY
 gem 'money-rails'
 
+# FLAT CAROUSEL
+gem "jquery-slick-rails"
 
 # CALENDAR
 gem 'fullcalendar-rails'

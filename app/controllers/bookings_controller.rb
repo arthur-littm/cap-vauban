@@ -14,13 +14,17 @@ class BookingsController < ApplicationController
   def create
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new(booking_params)
-    @booking.user = current_user
-    @booking.flat = @flat
-    @booking.price_cents = booking_price(@booking)
-    if @booking.save
-      redirect_to booking_path(@booking)
+    if @booking.start_date != "" && @booking.end_date != ""
+      @booking.user = current_user
+      @booking.flat = @flat
+      @booking.price_cents = booking_price(@booking)
+      if @booking.save
+        redirect_to booking_path(@booking)
+      else
+        redirect_to flat_path(@flat), alert: "Something went wrong, booking request cancelled"
+      end
     else
-      raise
+      redirect_to flat_path(@flat), alert: "You need to select two dates to book a flat"
     end
   end
 
