@@ -109,6 +109,29 @@
           <div role="tabpanel" class="tab-pane" id="prices">
             <div class="flat-prices">
               <h3>Seasonal prices</h3>
+              <div class="row">
+                <div class="col-xs-3">
+                  <p><strong>Low season</strong></p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(350) %>/week</p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 07/01/17 - 14/01/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 14/01/17 - 21/01/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 21/01/17 - 28/01/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 28/01/17 - 04/02/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 04/02/17 - 11/02/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 11/02/17 - 18/02/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 18/02/17 - 25/02/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 25/02/17 - 04/03/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 04/03/17 - 11/03/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 11/03/17 - 18/03/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 18/03/17 - 25/03/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 25/03/17 - 01/04/17</p>
+                </div>
+
+              </div>
               <ul>
                 <li class="price">Low season (oct. 1st - dec. 16th) <strong>300€/week</strong></li>
                 <li class="price">Mid season (dec. 17th - jan. 6th) <strong>430€/week</strong></li>
@@ -154,7 +177,7 @@
         <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
         <div class="text-center">
           <div class="input-daterange input-group" id="datepicker">
-          <input name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="From">
+            <input name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="From">
             <span class="input-group-addon">to</span>
             <input name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
           </div>
