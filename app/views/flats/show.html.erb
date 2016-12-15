@@ -108,39 +108,70 @@
 
           <div role="tabpanel" class="tab-pane" id="prices">
             <div class="flat-prices">
-              <h3>Seasonal prices</h3>
-              <div class="row">
+            <h4>Seasonal pricing</h4>
+              <div class="row pricing-container">
                 <div class="col-xs-3">
                   <p><strong>Low season</strong></p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(350) %>/week</p>
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(350) %>/week</p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 07/01/17 - 14/01/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 14/01/17 - 21/01/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 21/01/17 - 28/01/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 28/01/17 - 04/02/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 04/02/17 - 11/02/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 11/02/17 - 18/02/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 18/02/17 - 25/02/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 25/02/17 - 04/03/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 04/03/17 - 11/03/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 11/03/17 - 18/03/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 18/03/17 - 25/03/17</p>
-                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 25/03/17 - 01/04/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 07/01/17 - 01/04/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 04/11/17 - 23/12/17</p>
                 </div>
-
               </div>
-              <ul>
-                <li class="price">Low season (oct. 1st - dec. 16th) <strong>300€/week</strong></li>
-                <li class="price">Mid season (dec. 17th - jan. 6th) <strong>430€/week</strong></li>
-                <li class="price">Low season (jan. 7th - mar. 31st) <strong>250€/week</strong></li>
-                <li class="price">Low season (apr. 1st - jun. 9th) <strong>360€/week</strong></li>
-                <li class="price">Mid season (jun. 10th - jun. 30th) <strong>465€/week</strong></li>
-                <li class="price">Season (jul. 1st - jul. 14th) <strong>570€/week</strong></li>
-                <li class="price">High Season (aug. 19th - sept. 1st) <strong>570€/week</strong></li>
-              </ul>
+              <div class="row pricing-container">
+                <div class="col-xs-3">
+                  <p><strong>Mid season</strong></p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(500) %>/week</p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 31/12/16 - 07/01/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 01/04/17 - 10/06/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 16/09/17 - 04/11/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 23/12/17 - 30/12/17</p>
+                </div>
+              </div>
+              <div class="row pricing-container">
+                <div class="col-xs-3">
+                  <p><strong>High mid season</strong></p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(650) %>/week</p>
+                  <p> </p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 10/06/17 - 01/07/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 02/09/17 - 16/09/17</p>
+                </div>
+              </div>
+              <div class="row pricing-container">
+                <div class="col-xs-3">
+                  <p><strong>Mid high season</strong></p>
+                </div>
+                <div class="col-xs-4">
+                  <p> </p>
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(800) %>/week</p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 01/07/17 - 15/07/17</p>
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 19/08/17 - 02/09/17</p>
+                </div>
+              </div>
+              <div class="row pricing-container">
+                <div class="col-xs-3">
+                  <p><strong>High season</strong></p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(950) %>/week</p>
+                </div>
+                <div class="col-xs-4">
+                  <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 15/07/17 - 19/08/17</p>
+                </div>
+              </div>
             </div>
             <% if user_signed_in? && current_user.admin %>
             <%= link_to "Modifier", edit_flat_path(@flat), class: "btn btn-primary" %>

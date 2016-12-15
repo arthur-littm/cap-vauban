@@ -7,7 +7,7 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <% if user_signed_in? && current_user.admin %>
-        <%= link_to "Booking requests", flats_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Booking requests", requests_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
     <!-- Different navigation if login or not -->

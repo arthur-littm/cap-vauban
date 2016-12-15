@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [:index, :destroy, :show, :edit, :update]
+  get '/requests', to: 'bookings#requests'
 
   mount Attachinary::Engine => "/attachinary"
 

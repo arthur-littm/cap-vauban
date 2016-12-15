@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'arthur.littmann@gmail.com', password: 'password1', password_confirmation: 'password1')
-AdminUser.create!(email: 'francois@cap-vauban.com', password: 'password1', password_confirmation: 'password1')
+AdminUser.create!(first_name: "Arthur", last_name: "Littmann", email: 'arthur.littmann@gmail.com', password: 'password1', password_confirmation: 'password1')
+AdminUser.create!(first_name: "François", last_name: "Littmann", email: 'francois@cap-vauban.com', password: 'password1', password_confirmation: 'password1')
 
 Flat.create(title: "La Plage", description: "Appartement de charme, vue port Vauban, proche vieille ville, parking wifi clim")
 Flat.create(title: "Le Port", description: "Appartement de charme, vue port Vauban, proche vieille ville, parking wifi clim")

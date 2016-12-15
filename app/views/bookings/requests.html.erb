@@ -1,0 +1,62 @@
+<div class="container">
+  <h3>Booking requests</h3>
+  <% @bookings.where(status: "unconfirmed").each do |booking| %>
+  <div class="product">
+    <div class='product-upvote'>
+      <div><i class="fa fa-calendar"></i></div>
+      <div class='product-count'><%= booking.start_date %></div>
+    </div>
+    <% if booking.flat.banner_photo %>
+    <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+    <% else %>
+    <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+    <% end %>
+    <div class='product-body'>
+      <h3><%= booking.flat.title %></h3>
+      <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+      <p><%= booking.user.email %></p>
+      <p><%= booking.start_date %> - <%= booking.end_date %></p>
+      <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+    </div>
+    <div class="product-button">
+
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <%= link_to booking_path(booking) do %>
+      <li><i class="fa fa-info-circle"></i></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+
+  <h3>Confirmed bookings</h3>
+  <% @bookings.where.not(status: "unconfirmed").each do |booking| %>
+  <div class="product">
+    <div class='product-upvote'>
+      <div><i class="fa fa-calendar"></i></div>
+      <div class='product-count'><%= booking.start_date %></div>
+    </div>
+    <% if booking.flat.banner_photo %>
+    <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+    <% else %>
+    <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+    <% end %>
+    <div class='product-body'>
+      <h3><%= booking.flat.title %></h3>
+      <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+      <p><%= booking.user.email %></p>
+      <p><%= booking.start_date %> - <%= booking.end_date %></p>
+      <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+    </div>
+    <div class="product-button">
+
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <%= link_to booking_path(booking) do %>
+      <li><i class="fa fa-info-circle"></i></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>

@@ -3,6 +3,10 @@ class BookingsController < ApplicationController
     @bookings = Booking.all.where(user: current_user).order(start_date: :asc)
   end
 
+  def requests
+    @bookings = Booking.all.order(start_date: :asc)
+  end
+
   def show
     @booking = Booking.find(params[:id])
   end
@@ -25,6 +29,16 @@ class BookingsController < ApplicationController
       end
     else
       redirect_to flat_path(@flat), alert: "You need to select two different dates to book a flat"
+    end
+  end
+
+  def booking_status(booking)
+    if booking.status == "unconfirmed"
+      booking.status = "confirmed"
+      booking.save
+      redirect_to booking_path(booking)
+    else
+      redirect_to bookings_path(booking), alert: "Something went wrong, booking unconfirmed"
     end
   end
 
@@ -88,6 +102,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 end
