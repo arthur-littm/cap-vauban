@@ -3,9 +3,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index, :destroy, :show, :edit, :update] do
-    patch '/booking_status', to: 'bookings#requests', as: :booking_status
-  end
+  resources :bookings, only: [:index, :destroy, :show, :edit, :update]
+  patch '/requests', to: 'bookings#requests', as: :booking_status
   get '/requests', to: 'bookings#requests'
 
 
