@@ -3,8 +3,11 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index, :destroy, :show, :edit, :update]
+  resources :bookings, only: [:index, :destroy, :show, :edit, :update] do
+    patch '/booking_status', to: 'bookings#requests', as: :booking_status
+  end
   get '/requests', to: 'bookings#requests'
+
 
   mount Attachinary::Engine => "/attachinary"
 

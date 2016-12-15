@@ -32,10 +32,11 @@ class BookingsController < ApplicationController
     end
   end
 
-  def booking_status(booking)
-    if booking.status == "unconfirmed"
-      booking.status = "confirmed"
-      booking.save
+  def booking_status
+    @booking = Booking.find(params[:id])
+    if @booking.status == "unconfirmed"
+      @booking.status = "confirmed"
+      @booking.save
       redirect_to booking_path(booking)
     else
       redirect_to bookings_path(booking), alert: "Something went wrong, booking unconfirmed"

@@ -21,11 +21,11 @@
     <div class="product-button">
 
     </div>
-    <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <%= link_to booking_path(booking) do %>
-      <li><i class="fa fa-info-circle"></i></li>
+    <div class="product-controls">
+      <%= link_to booking_booking_status_path(booking), method: :patch, class: "btn btn-primary" do %>
+      Confirm
       <% end %>
-    </ul>
+    </div>
   </div>
   <% end %>
 
