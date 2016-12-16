@@ -1,5 +1,6 @@
 class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
+  before_action :authenticate_admin!, except: [:index, :show]
 
   def index
     @flats = Flat.all

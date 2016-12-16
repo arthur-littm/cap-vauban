@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_admin!, only: [:requests, :booking_status, :edit, :destroy]
+
   def index
     @bookings = Booking.all.where(user: current_user).order(start_date: :asc)
   end
