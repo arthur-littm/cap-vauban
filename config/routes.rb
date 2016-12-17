@@ -5,11 +5,12 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index, :destroy, :show, :edit, :update] do
     member do
+      patch '/confirm_booking', to: 'bookings#booking_status', as: :booking_status
+      patch '/cancel_booking', to: 'bookings#cancel_booking', as: :cancelled_booking
     end
   end
 
   get '/requests', to: 'bookings#requests'
-  patch '/update_status', to: 'bookings#requests', as: :booking_status
 
 
   mount Attachinary::Engine => "/attachinary"

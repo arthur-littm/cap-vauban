@@ -39,6 +39,7 @@ class BookingsController < ApplicationController
     if @booking.status == "unconfirmed"
       @booking.status = "confirmed"
       @booking.save
+      @booking.send_new_booking_mail
       redirect_to requests_path
     else
       redirect_to requests_path, alert: "Something went wrong, booking unconfirmed"
@@ -103,10 +104,15 @@ class BookingsController < ApplicationController
     end
   end
 
-  def destroy
+  def cancel_booking
     @booking = Booking.find(params[:id])
-    @booking.destroy
-    redirect_to bookings_path, notice: "Booking successfully cancelled"
+    @booking.status = "cancelled"
+    if @booking.save
+      @booking.send_cancelled_booking_mail
+      redirect_to requests_path, notice: "Booking successfully cancelled"
+    else
+      redirect_to requests_path, alert: "Something went wrong, booking not cancelled"
+    end
   end
 
   private

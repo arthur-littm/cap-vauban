@@ -8,7 +8,14 @@ class UserMailer < ApplicationMailer
   def new_booking(user, booking)
     @user = user  # Instance variable => available in view
     @booking = booking
-    mail(to: @user.email, subject: 'Cap Vauban - Booking')
+    mail(to: @user.email, subject: 'Cap Vauban - Réservation confirmée')
+    # This will render a view in `app/views/user_mailer`!
+  end
+
+  def cancelled_booking(user, booking)
+    @user = user  # Instance variable => available in view
+    @booking = booking
+    mail(to: @user.email, subject: 'Cap Vauban - Réservation annulée')
     # This will render a view in `app/views/user_mailer`!
   end
 end

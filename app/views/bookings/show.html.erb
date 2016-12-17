@@ -12,13 +12,5 @@
       <h2>Amount: <%= humanized_money_with_symbol(@booking.price_cents) %></h2>
       <h2><i class="fa fa-calendar"></i> <%= @booking.start_date %> to <%= @booking.end_date %></h2>
     </div>
-    <ul class="list-inline booking-controls">
-      <%= link_to booking_path(@booking), method: :delete do %>
-      <li><i class="fa fa-times"></i></li>
-      <% end %>
-      <%= link_to bookings_path do %>
-      <li><i class="fa fa-check"></i></li>
-      <% end %>
-    </ul>
   </div>
 </div>
