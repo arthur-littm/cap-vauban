@@ -68,4 +68,8 @@
   margin-bottom: 10px;
 }
 
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+  max-height: 500px;
+  margin: 0 auto;
+}
 
