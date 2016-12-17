@@ -1,6 +1,6 @@
 <div class="container-fluid text-center" style="background-color: aliceblue; ">
   <div class="flats-instructions">
-    <h4>Select one of our appartements below to make a booking request</h4>
+    <h4><%= t("flats_index.instructions") %></h4>
   </div>
   <div class="cards-container">
     <% @flats.each do |flat| %>
@@ -19,38 +19,38 @@
         <div class="card-info">
           <div class="row">
             <div class="col-xs-3">
-              <p><strong>Flat:</strong></p>
+              <p><strong><%= t("flats.flat") %>:</strong></p>
             </div>
             <div class="col-xs-4">
-              <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= flat.bedrooms %> Bedroom</p>
-              <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= flat.bathroom %> Bathroom</p>
-              <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= flat.toilet %> Toilet</p>
-              <p><i class="fa fa-eye fa-fw" aria-hidden="true"></i> Balcony</p>
+              <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= flat.bedrooms %> <%= t("flats.bedroom") %></p>
+              <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= flat.bathroom %> <%= t("flats.bathroom") %></p>
+              <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= flat.toilet %> <%= t("flats.toilet") %></p>
+              <p><i class="fa fa-eye fa-fw" aria-hidden="true"></i> <%= t("flats.balcony") %></p>
             </div>
             <div class="col-xs-4">
-              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Kitchen</p>
-              <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> Living room</p>
-              <p><i class="fa fa-car fa-fw" aria-hidden="true"></i> Garage</p>
+              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.kitchen") %></p>
+              <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> <%= t("flats.living_room") %></p>
+              <p><i class="fa fa-car fa-fw" aria-hidden="true"></i> <%= t("flats.garage") %></p>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-3">
-              <p><strong>Amenities:</strong></p>
+              <p><strong><%= t("flats.amenities") %>:</strong></p>
             </div>
             <div class="col-xs-4">
-              <p><i class="fa fa-wifi fa-fw" aria-hidden="true"></i> WI-FI</p>
-              <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> TV</p>
-              <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= flat.beds %> Beds</p>
+              <p><i class="fa fa-wifi fa-fw" aria-hidden="true"></i> <%= t("flats.wifi") %></p>
+              <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> <%= t("flats.tv") %></p>
+              <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= flat.beds %> <%= t("flats.beds") %></p>
             </div>
             <div class="col-xs-4">
-              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Oven</p>
-              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Dishwasher</p>
-              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> Fridge</p>
+              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.oven") %></p>
+              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.dishwasher") %></p>
+              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.fridge") %></p>
             </div>
           </div>
         </div>
         <div>
-          <%= link_to "Booking page", flat_path(flat), class: "btn btn-primary card-button" %>
+          <%= link_to t("flats.button"), flat_path(flat), class: "btn btn-primary card-button" %>
         </div>
 
         <div class="card-date">
@@ -63,7 +63,7 @@
   </div>
   <div class="container calendar-container">
   <div class="flats-instructions">
-    <h4>Check that our appartements are available on our agenda</h4>
+    <h4><%= t("flats_index.cal_instructions") %></h4>
   </div>
     <div class="calendar" id="calendar">
     </div>
@@ -98,7 +98,7 @@
     events: [
     <% @bookings.each do |booking| %>
     {
-      title: 'Booked - <%= booking.flat.title %>',
+      title: '<%= t("calendar.booked") %> - <%= booking.flat.title %>',
       start: '<%= booking.start_date %>',
       end: '<%= booking.end_date %>'
     },

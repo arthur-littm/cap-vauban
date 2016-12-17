@@ -18,6 +18,10 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# TRANSLATION
+gem 'rails-i18n', '~> 5.0.0'
+
+
 # MONEY
 gem 'money-rails'
 

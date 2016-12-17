@@ -20,4 +20,38 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  shared:
+    flats: "Flats"
+    bookings: "My Bookings"
+    booking_admin: "Bookings requests"
+    our_flats: "Our flats"
+    contact: "Contact"
+    email_us: "Email us!"
+    developer: "Need a website ?"
+    email_dev: "Contact developer!"
+  home_banner:
+    phrase: "Beautiful flats in Antibes"
+    button: "See flats"
+  flats_index:
+    instructions: "Select one of our appartements below to make a booking request"
+    cal_instructions: "Check that our appartements are available on our calendar below"
+  calendar:
+    booked: "Booked"
+  flats:
+    flat: "Flat"
+    amenities: "Amenities"
+    bedroom: "Bedroom"
+    bathroom: "Bathroom"
+    toilet: "Toilet"
+    baclony: "Balcony"
+    kitchen: "kitchen"
+    living_room: "Living room"
+    garage: "Garage"
+    wifi: "WI-FI"
+    tv: "TV"
+    beds: "Beds"
+    oven: "Oven"
+    dishwasher: "Dishwasher"
+    fridge: "Fridge"
+    button: "Booking page"
+
