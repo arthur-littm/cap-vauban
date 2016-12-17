@@ -39,10 +39,10 @@
       <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
-          <li role="presentation"><a href="#pictures" aria-controls="profile" role="tab" data-toggle="tab">Pictures</a></li>
-          <li role="presentation"><a href="#calendar" aria-controls="profile" role="tab" data-toggle="tab">Calendar</a></li>
-          <li role="presentation"><a href="#prices" aria-controls="messages" role="tab" data-toggle="tab">Prices</a></li>
+          <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab"><%= t("flats.tab_description") %></a></li>
+          <li role="presentation"><a href="#pictures" aria-controls="profile" role="tab" data-toggle="tab"><%= t("flats.tab_pictures") %></a></li>
+          <li role="presentation"><a href="#calendar" aria-controls="profile" role="tab" data-toggle="tab"><%= t("flats.tab_calendar") %></a></li>
+          <li role="presentation"><a href="#prices" aria-controls="messages" role="tab" data-toggle="tab"><%= t("flats.tab_prices") %></a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -99,20 +99,20 @@
           </div>
 
           <div role="tabpanel" class="tab-pane flat-calendar" id="calendar">
-            <h4>Click to select a month</h4>
+            <h4><%= t("calendar.instructions") %></h4>
             <div class="flat-calendar" id="flat-calendar">
             </div>
           </div>
 
           <div role="tabpanel" class="tab-pane" id="prices">
             <div class="flat-prices">
-              <h4>Seasonal pricing</h4>
+              <h4><%= t("prices.title") %></h4>
               <div class="row pricing-container">
                 <div class="col-xs-3">
-                  <p><strong>Low season</strong></p>
+                  <p><strong><%= t("prices.low") %></strong></p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(350) %>/week</p>
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(350) %>/<%= t("prices.week") %></p>
                 </div>
                 <div class="col-xs-4">
                   <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 07/01/17 - 01/04/17</p>
@@ -121,10 +121,10 @@
               </div>
               <div class="row pricing-container">
                 <div class="col-xs-3">
-                  <p><strong>Mid season</strong></p>
+                  <p><strong><%= t("prices.mid") %></strong></p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(500) %>/week</p>
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(500) %>/<%= t("prices.week") %></p>
                 </div>
                 <div class="col-xs-4">
                   <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 31/12/16 - 07/01/17</p>
@@ -135,10 +135,10 @@
               </div>
               <div class="row pricing-container">
                 <div class="col-xs-3">
-                  <p><strong>High mid season</strong></p>
+                  <p><strong><%= t("prices.high_mid") %></strong></p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(650) %>/week</p>
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(650) %>/<%= t("prices.week") %></p>
                   <p> </p>
                 </div>
                 <div class="col-xs-4">
@@ -148,11 +148,11 @@
               </div>
               <div class="row pricing-container">
                 <div class="col-xs-3">
-                  <p><strong>Mid high season</strong></p>
+                  <p><strong><%= t("prices.mid_high") %></strong></p>
                 </div>
                 <div class="col-xs-4">
                   <p> </p>
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(800) %>/week</p>
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(800) %>/<%= t("prices.week") %></p>
                 </div>
                 <div class="col-xs-4">
                   <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 01/07/17 - 15/07/17</p>
@@ -161,10 +161,10 @@
               </div>
               <div class="row pricing-container">
                 <div class="col-xs-3">
-                  <p><strong>High season</strong></p>
+                  <p><strong><%= t("prices.high") %></strong></p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(950) %>/week</p>
+                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(950) %>/<%= t("prices.week") %></p>
                 </div>
                 <div class="col-xs-4">
                   <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 15/07/17 - 19/08/17</p>

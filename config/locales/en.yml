@@ -37,6 +37,7 @@ en:
     cal_instructions: "Check that our appartements are available on our calendar below"
   calendar:
     booked: "Booked"
+    instructions: "Click to select a month"
   flats:
     flat: "Flat"
     amenities: "Amenities"
@@ -55,4 +56,16 @@ en:
     fridge: "Fridge"
     button: "Booking page"
     description: '@flat.description_english'
+    tab_description: "Description"
+    tab_pictures: "Pictures"
+    tab_prices: "Prices"
+    tab_calendar: "Calendar"
+  prices:
+    title: "Seasonal pricing"
+    low: "Low season"
+    mid: "Mid season"
+    high_mid: "High mid season"
+    mid_high: "Mid high season"
+    high: "High season"
+    week: "week"
 
