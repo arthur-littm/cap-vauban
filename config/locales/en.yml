@@ -44,7 +44,7 @@ en:
     bathroom: "Bathroom"
     toilet: "Toilet"
     baclony: "Balcony"
-    kitchen: "kitchen"
+    kitchen: "Kitchen"
     living_room: "Living room"
     garage: "Garage"
     wifi: "WI-FI"
@@ -54,4 +54,5 @@ en:
     dishwasher: "Dishwasher"
     fridge: "Fridge"
     button: "Booking page"
+    description: '@flat.description_english'
 

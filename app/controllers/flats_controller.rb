@@ -28,6 +28,6 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:title, :description, :capacity, :bathroom, :toilet, :bedrooms, :beds, :banner_photo, carousel_photos: [], photos: [])
+    params.require(:flat).permit(:title, :description, :description_english, :description_italian, :capacity, :bathroom, :toilet, :bedrooms, :beds, :banner_photo, carousel_photos: [], photos: [])
   end
 end

@@ -3,6 +3,8 @@
   <%= simple_form_for @flat do |f| %>
   <%= f.input :title %>
   <%= f.input :description, as: :text %>
+  <%= f.input :description_english, as: :text %>
+  <%= f.input :description_italian, as: :text %>
   <div class="form-inline">
   <%= f.input :capacity, as: :integer %>
   <%= f.input :bathroom, as: :integer %>
