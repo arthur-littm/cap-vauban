@@ -192,7 +192,9 @@
             <span class="input-group-addon">to</span>
             <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
           </div>
-
+          <div class="booking-message">
+          <%= f.input :message, as: :text, label: false, placeholder: "Write us something" %>
+          </div>
           <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
           Book
           <% end %>
@@ -214,7 +216,7 @@
             <span class="input-group-addon">to</span>
             <input name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
           </div>
-
+          <%= f.input :message, as: :text %>
           <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
           Book
           <% end %>

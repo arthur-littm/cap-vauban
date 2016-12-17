@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
+  after_create :send_admin_new_booking
   belongs_to :flat
   belongs_to :user
 
@@ -14,6 +15,11 @@ class Booking < ApplicationRecord
 
   def send_cancelled_booking_mail
     UserMailer.cancelled_booking(self.user, self).deliver_now
+    # UserMailer.new_booking(self.user).deliver_later(wait: 5.minutes)
+  end
+  private
+  def send_admin_new_booking
+    UserMailer.admin_new_booking(self.user, self).deliver_now
     # UserMailer.new_booking(self.user).deliver_later(wait: 5.minutes)
   end
 end
