@@ -15,13 +15,11 @@
       <h3><%= booking.flat.title %></h3>
       <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
       <p><%= booking.user.email %></p>
+      <p><%= booking.message %></p>
       <p><%= booking.start_date %> - <%= booking.end_date %></p>
       <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
     </div>
-    <div class="product-button">
-
-    </div>
-    <div class="product-controls">
+    <div class="request-buttons">
       <%= link_to 'Confirm', booking_status_booking_path(booking), data: { confirm: 'Confirm?' }, method: :patch, class: "btn btn-primary" %>
       <%= link_to 'Cancel', cancelled_booking_booking_path(booking), data: { confirm: 'Cancel?' }, method: :patch, class: "btn btn-danger" %>
     </div>
@@ -45,13 +43,14 @@
       <h3><%= booking.flat.title %></h3>
       <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
       <p><%= booking.user.email %></p>
+      <p><%= booking.message %></p>
       <p><%= booking.start_date %> - <%= booking.end_date %></p>
       <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
     </div>
     <div class="product-button">
 
     </div>
-    <ul class="list-inline product-controls hidden-sm hidden-xs">
+    <ul class="list-inline product-controls">
       <%= link_to booking_path(booking) do %>
       <li><i class="fa fa-info-circle"></i></li>
       <% end %>
@@ -75,13 +74,14 @@
       <h3><%= booking.flat.title %></h3>
       <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
       <p><%= booking.user.email %></p>
+      <p><%= booking.message %></p>
       <p><%= booking.start_date %> - <%= booking.end_date %></p>
       <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
     </div>
     <div class="product-button">
 
     </div>
-    <ul class="list-inline product-controls hidden-sm hidden-xs">
+    <ul class="list-inline product-controls">
       <%= link_to booking_path(booking) do %>
       <li><i class="fa fa-info-circle"></i></li>
       <% end %>
