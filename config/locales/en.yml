@@ -44,7 +44,7 @@ en:
     bedroom: "Bedroom"
     bathroom: "Bathroom"
     toilet: "Toilet"
-    baclony: "Balcony"
+    balcony: "Balcony"
     kitchen: "Kitchen"
     living_room: "Living room"
     garage: "Garage"
@@ -68,7 +68,7 @@ en:
     mid_high: "Mid high season"
     high: "High season"
     week: "week"
-    saturdays_instructions: "Our bookings are from <strong>saturday to saturday</strong> every week, with arrival time between 14:00 and 18:00."
+    saturdays_instructions: "Our bookings are from saturday to saturday every week, with arrival time between 14:00 and 18:00."
     other_instructions: "It is possible to arrive outside of our standard arrival date or time for a small additional fee on the week price."
     cleaning_fee: "Mandatory cleaning fee"
   booking:
@@ -78,6 +78,22 @@ en:
     until: "Until"
     message: "Write us something"
     book: "Book"
+    your_booking: "Your booking request"
+    amount: "Amount"
+    unconfirmed: "Unconfirmed"
+    confirmed: "Confirmed"
+    cancelled: "Cancelled"
+  devise:
+    sign_out: "Log out"
+    sign_in: "Login"
+    sign_up: "Signup"
+    password: "Password"
+    password_confirmation: "Confirm password"
+    forgot_password: "Forgot your password?"
+    send_password_instructions: "Send me reset password instructions"
+    remember_me: "Remember me"
+    first_name: "First name"
+    last_name: "Last name"
 
 
 

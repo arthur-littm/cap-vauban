@@ -112,7 +112,7 @@
                   <p><strong><%= t("prices.low") %></strong></p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(350) %>/<%= t("prices.week") %></p>
+                  <p><%= humanized_money_with_symbol(350) %>/<%= t("prices.week") %></p>
                 </div>
                 <div class="col-xs-4">
                   <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 07/01/17 - 01/04/17</p>
@@ -124,7 +124,7 @@
                   <p><strong><%= t("prices.mid") %></strong></p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(500) %>/<%= t("prices.week") %></p>
+                  <p><%= humanized_money_with_symbol(500) %>/<%= t("prices.week") %></p>
                 </div>
                 <div class="col-xs-4">
                   <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 31/12/16 - 07/01/17</p>
@@ -138,7 +138,7 @@
                   <p><strong><%= t("prices.high_mid") %></strong></p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(650) %>/<%= t("prices.week") %></p>
+                  <p><%= humanized_money_with_symbol(650) %>/<%= t("prices.week") %></p>
                   <p> </p>
                 </div>
                 <div class="col-xs-4">
@@ -152,7 +152,7 @@
                 </div>
                 <div class="col-xs-4">
                   <p> </p>
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(800) %>/<%= t("prices.week") %></p>
+                  <p><%= humanized_money_with_symbol(800) %>/<%= t("prices.week") %></p>
                 </div>
                 <div class="col-xs-4">
                   <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 01/07/17 - 15/07/17</p>
@@ -164,7 +164,7 @@
                   <p><strong><%= t("prices.high") %></strong></p>
                 </div>
                 <div class="col-xs-4">
-                  <p><i class="fa fa-money fa-fw" aria-hidden="true"></i> <%= humanized_money_with_symbol(950) %>/<%= t("prices.week") %></p>
+                  <p><%= humanized_money_with_symbol(950) %>/<%= t("prices.week") %></p>
                 </div>
                 <div class="col-xs-4">
                   <p><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 15/07/17 - 19/08/17</p>
@@ -184,9 +184,9 @@
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="booking-action fixed-action hidden-xs">
-        <h2><%= t("booking.booking_request") %></h2>
+        <h3><%= t("booking.booking_request") %></h3>
         <% if user_signed_in? %>
-        <p><%= t(prices.saturdays_instructions) %></p>
+        <p><%= t("prices.saturdays_instructions") %></p>
         <p class="booking-extra-info"><i class="fa fa-info-circle"></i> <%= t("prices.other_instructions") %></p>
         <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
         <div class="text-center">
@@ -196,7 +196,7 @@
             <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="<%= t("booking.until") %>">
           </div>
           <div class="booking-message">
-            <%= f.input :message, as: :text, label: false, placeholder: "<%= t("booking.message<%= t("booking.to") %>") %>" %>
+            <%= f.input :message, as: :text, label: false, placeholder: t("booking.message") %>
           </div>
           <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
           <%= t("booking.book") %>

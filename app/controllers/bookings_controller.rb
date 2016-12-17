@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
   def create
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new(booking_params)
-    if (@booking.start_date != "" && @booking.end_date != "") && (@booking.start_date != @booking.end_date)
+    if (@booking.start_date != "" && @booking.end_date != "") && (@booking.start_date != @booking.end_date) && @booking.start_date.to_date < @booking.end_date.to_date
       @booking.user = current_user
       @booking.flat = @flat
       @booking.price_cents = total_price(@booking)

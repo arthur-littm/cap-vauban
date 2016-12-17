@@ -12,8 +12,14 @@
     <% end %>
     <div class='product-body'>
       <h3><%= booking.flat.title %></h3>
-      <p><%= booking.status %></p>
-      <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+      <% if booking.status == "unconfirmed" %>
+      <p><%= t("booking.unconfirmed") %></p>
+      <% elsif booking.status == "confirmed" %>
+      <p><%= t("booking.confirmed") %></p>
+      <% elsif booking.status == "cancelled" %>
+      <p><%= t("booking.cancelled") %></p>
+      <% end %>
+      <p><%= t("booking.amount") %>: <%= humanized_money_with_symbol(booking.price_cents) %></p>
     </div>
     <ul class="list-inline product-controls hidden-sm hidden-xs">
       <%= link_to booking_path(booking) do %>
