@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     if (@booking.start_date != "" && @booking.end_date != "") && (@booking.start_date != @booking.end_date)
       @booking.user = current_user
       @booking.flat = @flat
-      @booking.price_cents = booking_price(@booking)
+      @booking.price_cents = total_price(@booking)
       if @booking.save
         redirect_to booking_path(@booking)
       else
@@ -39,19 +39,31 @@ class BookingsController < ApplicationController
     if @booking.status == "unconfirmed"
       @booking.status = "confirmed"
       @booking.save
-      redirect_to booking_path(booking)
+      redirect_to requests_path
     else
-      redirect_to bookings_path(booking), alert: "Something went wrong, booking unconfirmed"
+      redirect_to requests_path, alert: "Something went wrong, booking unconfirmed"
     end
   end
 
-  def booking_price(booking)
-    # Date format -> yyyy-mm-dd
+  def total_price(booking)
     start_d = Date.parse(booking.start_date)
     end_d = Date.parse(booking.end_date)
 
-    # start_d = booking.start_date.split("-")
-    # end_date_array = booking.start_date.split("-")
+    multiplier = (end_d.cweek - start_d.cweek) - 1
+
+    date = start_d
+    total_price = booking_price(date)
+    multiplier.times do
+      date += 7
+      total_price += booking_price(date)
+    end
+    return total_price
+  end
+
+  def booking_price(date)
+    # Date format -> yyyy-mm-dd
+    start_d = date
+
     case
     when start_d.month == 12 && start_d.day >= 23
       week = 500
@@ -76,11 +88,6 @@ class BookingsController < ApplicationController
     when (start_d.month == 12 && start_d.day >= 31) || (start_d.month == 1 && start_d.day >= 1)
       week = 500
     end
-
-    multiplier = end_d.cweek - start_d.cweek
-
-    return (multiplier * week)
-
   end
 
   def edit

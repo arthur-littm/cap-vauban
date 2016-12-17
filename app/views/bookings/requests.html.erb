@@ -22,9 +22,7 @@
 
     </div>
     <div class="product-controls">
-      <%= link_to booking_status_booking_path(booking), method: :patch, class: "btn btn-primary" do %>
-      Confirm
-      <% end %>
+    <%= link_to 'Confirm', booking_status_path(booking), method: :patch, class: "btn btn-primary" %>
     </div>
   </div>
   <% end %>
