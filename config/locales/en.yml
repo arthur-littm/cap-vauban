@@ -68,4 +68,27 @@ en:
     mid_high: "Mid high season"
     high: "High season"
     week: "week"
+    saturdays_instructions: "Our bookings are from <strong>saturday to saturday</strong> every week, with arrival time between 14:00 and 18:00."
+    other_instructions: "It is possible to arrive outside of our standard arrival date or time for a small additional fee on the week price."
+    cleaning_fee: "Mandatory cleaning fee"
+  booking:
+    booking_request: "Booking request"
+    from: "From"
+    to: "to"
+    until: "Until"
+    message: "Write us something"
+    book: "Book"
+
+
+
+
+
+
+
+
+
+
+
+
+
 

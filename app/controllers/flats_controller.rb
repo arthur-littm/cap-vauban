@@ -4,12 +4,12 @@ class FlatsController < ApplicationController
 
   def index
     @flats = Flat.all
-    @bookings = Booking.all
+    @bookings = Booking.all.where(status: "confirmed")
   end
 
   def show
     @flat = Flat.find(params[:id])
-    @bookings = Booking.where(flat: @flat)
+    @bookings = Booking.where(flat: @flat).where(status: "confirmed")
   end
 
   def edit
