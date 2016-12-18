@@ -97,7 +97,12 @@ en:
     first_name: "First name"
     last_name: "Last name"
   mailer:
-
+    hello: "Hello"
+    interest: "Thank you for booking our flat"
+    dates: "from the"
+    dates_until: "until the"
+    line1: "The flat is available for the price of"
+    for: "for"
 
 
 
