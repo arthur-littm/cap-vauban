@@ -5,14 +5,14 @@ fr:
     booking_admin: "Demandes de Réservations"
     our_flats: "Nos appartements"
     contact: "Contact"
-    email_us: "Contactez nous !"
-    developer: "Besoin d'un site ?"
+    email_us: "Contactez nous!"
+    developer: "Besoin d'un site?"
     email_dev: "Contactez le développeur!"
   home_banner:
-    phrase: "Vôtre location de rêve a Antibes"
+    phrase: "Votre location de rêve à Antibes"
     button: "Voir les appartements"
   flats_index:
-    instructions: "Choissisez l'un des appartements ci-dessous pour faire une demande de réservations"
+    instructions: "Choissisez l'un des appartements ci-dessous pour faire une demande de réservation"
     cal_instructions: "Vérifiez que nos appartements soient disponibles sur notre calendrier ci-dessous"
   calendar:
     booked: "Réservé"
@@ -20,7 +20,7 @@ fr:
   flats:
     flat: "Appartement"
     amenities: "Equipements"
-    bedroom: "Chambres"
+    bedroom: "Chambre"
     bathroom: "Salle de bain"
     toilet: "Toilettes"
     balcony: "Balcon"
