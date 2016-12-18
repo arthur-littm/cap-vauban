@@ -14,6 +14,8 @@ it:
   flats_index:
     instructions: "Select one of our appartements below to make a booking request"
     cal_instructions: "Check that our appartements are available on our calendar below"
+    up_to: "Up to"
+    people: "people"
   calendar:
     booked: "Booked"
     instructions: "Click to select a month"

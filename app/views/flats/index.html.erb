@@ -54,7 +54,7 @@
         </div>
 
         <div class="card-date">
-          <p><i class="fa fa-users" aria-hidden="true"></i> - Up to <strong><%= flat.capacity %></strong> people</p>
+          <p><i class="fa fa-users" aria-hidden="true"></i> - <%= t("flats_index.up_to") %> <strong><%= flat.capacity %></strong> <%= t("flats_index.people") %></p>
         </div>
         <%= link_to "", flat_path(flat), class: "card-link" %>
       </div>

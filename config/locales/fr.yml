@@ -13,7 +13,9 @@ fr:
     button: "Voir les appartements"
   flats_index:
     instructions: "Choissisez l'un des appartements ci-dessous pour faire une demande de réservation"
-    cal_instructions: "Vérifiez que nos appartements soient disponibles sur notre calendrier ci-dessous"
+    cal_instructions: "Vérifiez la disponibilité de nos appartements sur notre calendrier ci-dessous"
+    up_to: "Jusqu'à"
+    people: "personnes"
   calendar:
     booked: "Réservé"
     instructions: "Cliquez pour afficher le mois désiré"
