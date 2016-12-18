@@ -27,26 +27,14 @@
   .card-date {
     font-weight: 100;
     color: #424855;
-
   }
   .card-info {
-    padding: 10px;
-    border: 0.5px solid rgba(197, 201, 201, 0.24);
-    background-color: whitesmoke;
-    font-weight: 100;
-    font-size: 14px;
-    text-align: left;
-    padding: 10px;
-    display: none;
-    transition: .4s;
-    p {
-    }
-  }
-  .card-button {
-    z-index: 5;
-    margin: 10px auto;
-    display: none;
-    width: 40%;
+    position: absolute;
+    bottom: 150px;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: .5s;
   }
   .card-image {
     background-size: cover !important;
@@ -59,27 +47,11 @@
 
 .card:hover {
   box-shadow: 1px 1px 6px 0px #96A6C7;
-  .card-title {
-    h3 {
-      font-weight: 400;
-      transition: .5s;
-    }
-  }
-  .card-date {
-    display: none;
+  .card-image {
+    opacity: 0.7
   }
   .card-info {
-    display: flex;
-    flex-direction: column;
-    transition: .5s;
-  }
-  .card-button {
-    display: block;
-    transition: .5s;
-  }
-  .card-image {
-    height: 0;
-    transition: .5s;
+    opacity: 1;
   }
 }
 

@@ -16,43 +16,6 @@
         <div class="card-title">
           <h3><%= flat.title %></h3>
         </div>
-        <div class="card-info">
-          <div class="row">
-            <div class="col-xs-3">
-              <p><strong><%= t("flats.flat") %>:</strong></p>
-            </div>
-            <div class="col-xs-4">
-              <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= flat.bedrooms %> <%= t("flats.bedroom") %></p>
-              <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= flat.bathroom %> <%= t("flats.bathroom") %></p>
-              <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= flat.toilet %> <%= t("flats.toilet") %></p>
-              <p><i class="fa fa-eye fa-fw" aria-hidden="true"></i> <%= t("flats.balcony") %></p>
-            </div>
-            <div class="col-xs-4">
-              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.kitchen") %></p>
-              <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> <%= t("flats.living_room") %></p>
-              <p><i class="fa fa-car fa-fw" aria-hidden="true"></i> <%= t("flats.garage") %></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-3">
-              <p><strong><%= t("flats.amenities") %>:</strong></p>
-            </div>
-            <div class="col-xs-4">
-              <p><i class="fa fa-wifi fa-fw" aria-hidden="true"></i> <%= t("flats.wifi") %></p>
-              <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> <%= t("flats.tv") %></p>
-              <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= flat.beds %> <%= t("flats.beds") %></p>
-            </div>
-            <div class="col-xs-4">
-              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.oven") %></p>
-              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.dishwasher") %></p>
-              <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.fridge") %></p>
-            </div>
-          </div>
-        </div>
-        <div>
-          <%= link_to t("flats.button"), flat_path(flat), class: "btn btn-primary card-button" %>
-        </div>
-
         <div class="card-date">
           <p><i class="fa fa-users" aria-hidden="true"></i> - <%= t("flats_index.up_to") %> <strong><%= flat.capacity %></strong> <%= t("flats_index.people") %></p>
         </div>
