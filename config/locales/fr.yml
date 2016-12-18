@@ -67,6 +67,8 @@ fr:
     cancelled: "Annulé"
     flat: "Voir l'appartment"
     pay: "Payer"
+    nights: "Nuitées"
+    info: "Réservation"
   devise:
     sign_out: "Se déconnecter"
     sign_in: "Se connecter"

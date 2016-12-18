@@ -1,9 +1,11 @@
 .product {
+  margin: 10px;
   display: flex;
   align-items: center;
   padding: 20px;
   border-radius: 3px;
   transition: all 0.15s ease;
+  background-color: white;
 }
 
 /* Body design */
@@ -69,11 +71,10 @@
 .product-controls a {
   padding: 0 20px;
   font-size: 20px;
-  color: #E6E6E6;
+  font-weight: 300;
+  color: white;
 }
-.product-controls a:hover {
-  color: #D3473C !important
-}
+
 .product-controls-hidden a {
   color: transparent;
   font-size: 15px;
@@ -82,10 +83,6 @@
 }
 
 /* Hover effects */
-.product:hover {
-  background: #f7f7fa;
-  cursor: pointer;
-}
 .product-upvote:hover, .product-upvote.product-upvote-upvoted {
   color: #5898f1;
   cursor: pointer;

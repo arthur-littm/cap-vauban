@@ -88,6 +88,8 @@ en:
     cancelled: "Cancelled"
     flat: "See flat"
     pay: "Payment"
+    nights: "Nights"
+    info: "Booking"
   devise:
     sign_out: "Log out"
     sign_in: "Login"

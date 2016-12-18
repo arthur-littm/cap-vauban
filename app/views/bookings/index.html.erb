@@ -21,18 +21,19 @@
       <p><%= t("booking.cancelled") %></p>
       <% end %>
       <p><%= t("booking.amount") %>: <%= humanized_money_with_symbol(booking.price_cents) %></p>
+      <p><%= (booking.end_date.to_date - booking.start_date.to_date).to_i %> <%= t("booking.nights") %></p>
     </div>
     <ul class="list-inline product-controls hidden-sm hidden-xs">
-      <%= link_to booking_path(booking) do %>
-      <li><i class="fa fa-info-circle"></i></li>
+      <%= link_to booking_path(booking), class: "btn btn-primary" do %>
+      <li><i class="fa fa-info-circle"></i> <%= t("booking.info") %></li>
       <% end %>
     </ul>
   </div>
   <% end %>
   <% else %>
   <div class="text-center no-bookings">
-  <h2><%= t("booking.no_booking_request") %></h2>
-  <%= link_to t("home_banner.button"), flats_path, class: "btn btn-primary" %>
+    <h2><%= t("booking.no_booking_request") %></h2>
+    <%= link_to t("home_banner.button"), flats_path, class: "btn btn-primary" %>
   </div>
   <% end %>
 </div>
