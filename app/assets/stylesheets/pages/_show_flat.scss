@@ -50,7 +50,7 @@
 
 .fixed-action {
   position: fixed;
-  top: 85px;
+  top: 100px;
   right: 50px;
   width: 355px;
 }
@@ -59,8 +59,14 @@
 }
 
 .gallery {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin-top: 20px;
+  .photo-card {
+    width: 25%;
+    margin: 10px auto;
+  }
 }
 
 .pricing-container {
