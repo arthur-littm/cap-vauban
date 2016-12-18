@@ -15,7 +15,7 @@
 <% else %>
 <p>C'est la première réservation qu'il fait!</p>
 <% end %>
-<% if @user.bookings[(@user.bookings.length - 1)].status == "cancelled" %>
+<% if @user.bookings.last(2).first.status == "cancelled" %>
 <p>Son dernier booking à été annulé ("Cancelled sur le site")</p>
 <% end %>
 <a href="http://www.cap-vauban.com/requests">Page de confirmation</a>
