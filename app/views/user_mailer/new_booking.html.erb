@@ -1,7 +1,7 @@
-<p><%= t("mailer.hello")%> <%= @user.first_name %>,</p>
+<p>Bonjour,</p>
 
-<p><%= t("mailer.interest") %> "<%= @booking.flat.title %>", <%= t("mailer.dates") %> <%= @booking.start_date %> <%= t("mailer.dates_until") %> <%= @booking.end_date %></p>
-<p><%= t("mailer.line1") %> <%= humanized_money_with_symbol(@booking.price_cents) %>, pour <%= @booking.flat.capacity %> personnes, charges comprises (eau + électricité) avec à disposition un garage fermé avec 2 vélos
+<p>Merci de l'intérêt que vous portez à notre appartement "<%= @booking.flat.title %>"
+Il est encore libre à cette période au prix de <%= humanized_money_with_symbol(@booking.price_cents) %>, pour <%= @booking.flat.capacity %> personnes, charges comprises (eau + électricité) avec à disposition un garage fermé avec 2 vélos
 et internet wifi illimité. Le linge de maison (draps/serviettes) est offert.
 L'arrivée est prévue entre 14h00 et 18h00, une arrivée tardive pourra éventuellement
 être organisée sous réserve de disponibilité, moyennant un supplément de 30€
