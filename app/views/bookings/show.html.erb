@@ -1,5 +1,5 @@
-<div class="container">
-  <h1><%= t("booking.your_booking") %></h1>
+<div class="container booking-container">
+  <h2><%= t("booking.your_booking") %></h2>
   <div class="booking">
     <% if @booking.flat.banner_photo %>
     <%= cl_image_tag @booking.flat.banner_photo.path, class: "booking-image" %>
@@ -18,6 +18,12 @@
       <% end %>
       <h2><%= t("booking.amount") %>: <%= humanized_money_with_symbol(@booking.price_cents) %></h2>
       <h2><i class="fa fa-calendar"></i> <%= @booking.start_date %> <%= t("booking.to") %> <%= @booking.end_date %></h2>
+    </div>
+    <div class="booking-controls">
+      <%= link_to t("booking.flat"), flat_path(@booking.flat), class: "btn btn-primary" %>
+      <% if @booking.status == "confirmed" %>
+      <%= link_to t("booking.pay"), flat_path(@booking.flat), class: "btn btn-success" %>
+      <% end %>
     </div>
   </div>
 </div>
