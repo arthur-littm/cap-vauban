@@ -63,6 +63,7 @@ en:
     tab_prices: "Prices"
     tab_calendar: "Calendar"
     tab_map: "Map"
+    close: "Close"
   prices:
     title: "Seasonal pricing"
     low: "Low season"
