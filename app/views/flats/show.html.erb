@@ -247,7 +247,7 @@
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
             <% @flat.photos.each_with_index do |photo, index| %>
-            <% unless index == 0 %>
+            <% if index == 0 %>
             <div class="item active carousel-image">
               <%= cl_image_tag @flat.banner_photo.path %>
             </div>

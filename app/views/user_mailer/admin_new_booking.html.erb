@@ -10,12 +10,13 @@
 <% end %>
 <p>Prénom: <%= @user.first_name %></p>
 <p>Nom: <%= @user.last_name %></p>
+<p>@user.email</p>
 <% if @user.bookings.where(status: "confirmed").count > 1 %>
 <p>Il à déjà réservé <%= @user.bookings.where(status: "confirmed").count %> fois</p>
 <% else %>
 <p>C'est la première réservation qu'il fait!</p>
 <% end %>
 <% if @user.bookings.last(2).first.status == "cancelled" %>
-<p>Son dernier booking à été annulé ("Cancelled sur le site")</p>
+<p>Son dernier booking a été annulé ("Cancelled sur le site")</p>
 <% end %>
 <a href="http://www.cap-vauban.com/requests">Page de confirmation</a>
