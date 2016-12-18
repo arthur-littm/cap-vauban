@@ -41,6 +41,7 @@ fr:
     tab_pictures: "Photos"
     tab_prices: "Prix"
     tab_calendar: "Calendrier"
+    tab_map: "Carte"
   prices:
     title: "Tarifs saisonniers"
     low: "Basse saison"
