@@ -16,7 +16,34 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="bookings">
+    <h3>Users</h3>
       <% @unconfirmed.each do |booking| %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= l(booking.start_date.to_date) %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+        </div>
+        <div class="request-buttons">
+          <%= link_to 'Confirm', booking_status_booking_path(booking), data: { confirm: 'Confirm?' }, method: :patch, class: "btn btn-primary" %>
+          <%= link_to 'Cancel', cancelled_booking_booking_path(booking), data: { confirm: 'Cancel?' }, method: :patch, class: "btn btn-danger" %>
+        </div>
+      </div>
+      <% end %>
+      <h3>Admin</h3>
+      <% @admin_bookings.where(status: "unconfirmed").each do |booking| %>
       <div class="product">
         <div class='product-upvote'>
           <div><i class="fa fa-calendar"></i></div>
@@ -45,8 +72,7 @@
 
     <div role="tabpanel" class="tab-pane" id="leport">
       <h3>Requests</h3>
-      <% @bookings.where(status: "unconfirmed").each do |booking| %>
-      <% if booking.flat.title == "Le Port" %>
+      <% @bookings_leport.where(status: "unconfirmed").each do |booking| %>
       <div class="product">
         <div class='product-upvote'>
           <div><i class="fa fa-calendar"></i></div>
@@ -76,10 +102,8 @@
         </div>
       </div>
       <% end %>
-      <% end %>
       <h3>Confirmed</h3>
-      <% @bookings.where(status: "confirmed").each do |booking| %>
-      <% if booking.flat.title == "Le Port" %>
+      <% @bookings_leport.where(status: "confirmed").each do |booking| %>
       <div class="product">
         <div class='product-upvote'>
           <div><i class="fa fa-calendar"></i></div>
@@ -109,14 +133,12 @@
           <% end %>
         </ul>
       </div>
-      <% end %>
       <% end %>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="laplage">
       <h3>Requests</h3>
-      <% @bookings.where(status: "unconfirmed").each do |booking| %>
-      <% if booking.flat.title == "La Plage" %>
+      <% @bookings_laplage.where(status: "unconfirmed").each do |booking| %>
       <div class="product">
         <div class='product-upvote'>
           <div><i class="fa fa-calendar"></i></div>
@@ -146,10 +168,8 @@
         </div>
       </div>
       <% end %>
-      <% end %>
       <h3>Confirmed</h3>
-      <% @bookings.where(status: "confirmed").each do |booking| %>
-      <% if booking.flat.title == "La Plage" %>
+      <% @bookings_laplage.where(status: "confirmed").each do |booking| %>
       <div class="product">
         <div class='product-upvote'>
           <div><i class="fa fa-calendar"></i></div>
@@ -179,7 +199,6 @@
           <% end %>
         </ul>
       </div>
-      <% end %>
       <% end %>
     </div>
 
@@ -283,7 +302,6 @@
 
     <div role="tabpanel" class="tab-pane" id="all-users">
       <% @bookings.each do |booking| %>
-      <% if booking.user.admin == false %>
       <div class="product">
         <div class='product-upvote'>
           <div><i class="fa fa-calendar"></i></div>
@@ -313,13 +331,11 @@
           <% end %>
         </ul>
       </div>
-      <% end %>
       <% end %>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="all-admin">
-      <% @bookings.each do |booking| %>
-      <% if booking.user.admin == true %>
+      <% @admin_bookings.each do |booking| %>
       <div class="product">
         <div class='product-upvote'>
           <div><i class="fa fa-calendar"></i></div>
@@ -349,7 +365,6 @@
           <% end %>
         </ul>
       </div>
-      <% end %>
       <% end %>
     </div>
   </div>

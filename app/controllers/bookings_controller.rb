@@ -6,10 +6,17 @@ class BookingsController < ApplicationController
   end
 
   def requests
-    @bookings = Booking.all.order(start_date: :asc)
+    admin = User.all.where(admin: true)
+    leport = Flat.all.where(title: "Le Port")
+    laplage = Flat.all.where(title: "La Plage")
+
+    @bookings = Booking.all.order(start_date: :asc).where.not(user: admin)
+    @bookings_leport = @bookings.where(flat: leport)
+    @bookings_laplage = @bookings.where(flat: laplage)
     @confirmed = @bookings.where(status: "confirmed")
     @unconfirmed = @bookings.where(status: "unconfirmed")
     @cancelled = @bookings.where(status: "cancelled")
+    @admin_bookings = Booking.all.order(start_date: :asc).where(user: admin)
   end
 
   def show
