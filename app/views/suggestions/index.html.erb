@@ -13,8 +13,8 @@
         <% end %>
         <div class='product-body'>
           <h3><%= suggestion.title %></h3>
-          <p><%= t("suggestion.content") %></p>
-          <p><i class="fa fa-pin"></i> <%= suggestion.address %></p>
+          <p><%= suggestion.content %></p>
+          <p><i class="fa fa-map-marker"></i> <%= suggestion.address %></p>
         </div>
         <ul class="list-inline product-controls hidden-sm hidden-xs">
           <% if user_signed_in? && current_user.admin %>
