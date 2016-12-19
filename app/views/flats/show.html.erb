@@ -52,31 +52,31 @@
             <div class="media-section">
               <p><%= @flat.description %></p>
               <div class="row">
-                <div class="col-xs-3">
+                <div class="col-sm-3">
                   <p><strong><%= t("flats.flat") %>:</strong></p>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-6 col-sm-4">
                   <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= @flat.bedrooms %> <%= t("flats.bedroom") %></p>
                   <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= @flat.bathroom %> <%= t("flats.bathroom") %></p>
                   <p><i class="fa fa-bath fa-fw" aria-hidden="true"></i> <%= @flat.toilet %> <%= t("flats.toilet") %></p>
                   <p><i class="fa fa-eye fa-fw" aria-hidden="true"></i> <%= t("flats.balcony") %></p>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-6 col-sm-4">
                   <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.kitchen") %></p>
                   <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> <%= t("flats.living_room") %></p>
                   <p><i class="fa fa-car fa-fw" aria-hidden="true"></i> <%= t("flats.garage") %></p>
                 </div>
               </div>
               <div class="row">
-                <div class="col-xs-3">
+                <div class="col-sm-3">
                   <p><strong><%= t("flats.amenities") %>:</strong></p>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-6 col-sm-4">
                   <p><i class="fa fa-wifi fa-fw" aria-hidden="true"></i> <%= t("flats.wifi") %></p>
                   <p><i class="fa fa-television fa-fw" aria-hidden="true"></i> <%= t("flats.tv") %></p>
                   <p><i class="fa fa-bed fa-fw" aria-hidden="true"></i> <%= @flat.beds %> <%= t("flats.beds") %></p>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-6 col-sm-4">
                   <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.oven") %></p>
                   <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.dishwasher") %></p>
                   <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.fridge") %></p>
@@ -86,15 +86,15 @@
           </div>
 
           <div role="tabpanel" class="tab-pane" id="pictures">
-              <div class='gallery'>
-                <% @flat.photos.each do |photo| %>
-                <div class='photo-card'>
-                  <a class="thumbnail" data-toggle="modal" data-target="#myModal">
-                    <%= cl_image_tag photo.path %>
-                  </a>
-                </div>
-                <% end %>
+            <div class='gallery'>
+              <% @flat.photos.each do |photo| %>
+              <div class='photo-card'>
+                <a class="thumbnail" data-toggle="modal" data-target="#myModal">
+                  <%= cl_image_tag photo.path %>
+                </a>
               </div>
+              <% end %>
+            </div>
           </div>
 
           <div role="tabpanel" class="tab-pane flat-calendar" id="calendar">
@@ -188,7 +188,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <div class="booking-action fixed-action hidden-xs">
+      <div class="booking-action fixed-action hidden-xs hidden-sm">
         <h3><%= t("booking.booking_request") %></h3>
         <% if user_signed_in? %>
         <p><%= t("prices.saturdays_instructions") %></p>
@@ -208,29 +208,33 @@
           <% end %>
           <% end %>
           <% else %>
-          <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+          <%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %>
+          <%= link_to t("devise.sign_up"), new_user_registration_path, class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
-      <div class="booking-action hidden-sm hidden-md hidden-lg">
-        <h2>Booking request</h2>
+      <div class="booking-action hidden-md hidden-lg">
+      <h3><%= t("booking.booking_request") %></h3>
         <% if user_signed_in? %>
-        <p>Our bookings are from <strong>saturday to saturday</strong> every week, with arrival time between 14:00 and 18:00.</p>
-        <p class="booking-extra-info"><i class="fa fa-info-circle"></i> It is possible to arrive outside of our standard arrival date or time for a small additional fee on the week price</p>
+        <p><%= t("prices.saturdays_instructions") %></p>
+        <p class="booking-extra-info"><i class="fa fa-info-circle"></i> <%= t("prices.other_instructions") %></p>
         <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
         <div class="text-center">
           <div class="input-daterange input-group" id="datepicker">
-            <input name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="From">
-            <span class="input-group-addon">to</span>
-            <input name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
+            <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="<%= t("booking.from") %>">
+            <span class="input-group-addon"><%= t("booking.to") %></span>
+            <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="<%= t("booking.until") %>">
           </div>
-          <%= f.input :message, as: :text %>
+          <div class="booking-message">
+            <%= f.input :message, as: :text, label: false, placeholder: t("booking.message") %>
+          </div>
           <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-          Book
+          <%= t("booking.book") %>
           <% end %>
           <% end %>
           <% else %>
-          <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-primary" %>
+          <%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %>
+          <%= link_to t("devise.sign_up"), new_user_registration_path, class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
@@ -280,6 +284,7 @@
   $(document).ready(function(){
 
     $('.datepicker.from').datepicker({
+      autoclose: true,
       format: "yyyy-mm-dd",
       daysOfWeekDisabled: "0,1,2,3,4,5",
       daysOfWeekHighlighted: "6",
@@ -297,6 +302,7 @@
       ]
     });
     $('.datepicker.until').datepicker({
+      autoclose: true,
       format: "yyyy-mm-dd",
       daysOfWeekDisabled: "0,1,2,3,4,5",
       daysOfWeekHighlighted: "6",
