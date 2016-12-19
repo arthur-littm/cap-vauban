@@ -25,7 +25,7 @@ class SuggestionsController < ApplicationController
   def update
     @suggestion = Suggestion.find(params[:id])
     if @suggestion.update(suggestion_params)
-      redirect_to suggestion_path(@suggestion), notice: 'Suggestion mise a jour'
+      redirect_to suggestions_path, notice: 'Suggestion mise a jour'
     else
       render :edit
     end

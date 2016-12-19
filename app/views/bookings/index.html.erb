@@ -4,7 +4,7 @@
   <div class="product">
     <div class='product-upvote'>
       <div><i class="fa fa-calendar"></i></div>
-      <div class='product-count'><%= booking.start_date %></div>
+      <div class='product-count'><%= l(booking.start_date.to_date) %></div>
     </div>
     <% if booking.flat.banner_photo %>
     <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
