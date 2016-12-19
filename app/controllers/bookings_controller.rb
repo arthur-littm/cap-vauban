@@ -10,7 +10,8 @@ class BookingsController < ApplicationController
     leport = Flat.all.where(title: "Le Port")
     laplage = Flat.all.where(title: "La Plage")
 
-    @bookings = Booking.all.order(start_date: :asc).where.not(user: admin)
+    @bookings = Booking.all.order(start_date: :asc)
+    @users_bookings = Booking.all.order(start_date: :asc).where.not(user: admin)
     @bookings_leport = @bookings.where(flat: leport)
     @bookings_laplage = @bookings.where(flat: laplage)
     @confirmed = @bookings.where(status: "confirmed")
