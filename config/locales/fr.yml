@@ -38,8 +38,11 @@ fr:
     dishwasher: "Lave vaiselle"
     fridge: "Grand frigo"
     location: "Emplacement"
-    airport: "Aéroport"
-    train_station: "Gare"
+    train_station: "mètres de la gare"
+    beach: "mètres de la plage"
+    restaurants: "mètres des restaurants"
+    bars: "mètres des bars & vie nocturne"
+    airport: "kilomètres de l'aéroport"
     button: "Page de réservation"
     description: '@flat.description'
     tab_description: "Description"
