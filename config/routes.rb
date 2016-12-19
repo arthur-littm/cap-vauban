@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/requests', to: 'bookings#requests'
 
   resources :suggestions, only: [:new, :create, :index, :edit, :update, :destroy]
+  resources :orders, only: [:show, :create] do
+      resources :payments, only: [:new, :create]
+  end
 
   mount Attachinary::Engine => "/attachinary"
 

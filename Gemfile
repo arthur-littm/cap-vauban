@@ -29,6 +29,7 @@ gem 'rails-i18n', '~> 5.0.0'
 
 # MONEY
 gem 'money-rails'
+gem 'stripe'
 
 # CALENDAR
 gem 'fullcalendar-rails'

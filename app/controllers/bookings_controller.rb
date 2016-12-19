@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @order = @booking.order
   end
 
   def new
@@ -23,7 +24,11 @@ class BookingsController < ApplicationController
     if (@booking.start_date != "" && @booking.end_date != "") && (@booking.start_date != @booking.end_date) && @booking.start_date.to_date < @booking.end_date.to_date
       @booking.user = current_user
       @booking.flat = @flat
+      @booking.sku = "booking-#{@flat.title.delete(' ').downcase}"
       @booking.price_cents = total_price(@booking)
+      @order  = Order.create!(booking_sku: @booking.sku, amount: @booking.price_cents, state: 'pending')
+      @order.booking = @booking
+      @order.save
       if @booking.save
         redirect_to booking_path(@booking)
       else
