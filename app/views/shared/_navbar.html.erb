@@ -29,7 +29,11 @@
 
 
     <% end %>
-
+  <% if I18n.locale == I18n.default_locale %>
+  <%= link_to image_tag("english.png"), { :locale=>'en' }, class: "i18n-set-locale" %>
+  <% else %>
+  <%= link_to image_tag("french.png"), { :locale=>'fr' }, class: "i18n-set-locale" %>
+  <%end%>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
@@ -58,6 +62,8 @@
       </ul>
       <% end %>
     </div>
+
   </div>
+
 </div>
 
