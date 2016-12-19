@@ -92,6 +92,8 @@ fr:
     first_name: "Prénom"
     last_name: "Nom de famille"
   mailer:
+    new_booking_subject: "Réservation confirmée"
+    cancelled_booking_subject: "Réservation annulée"
   suggestions:
     phrase: "Nos suggestions à Antibes"
     proposition: "Suggérer un endroit!"
