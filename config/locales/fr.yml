@@ -3,7 +3,9 @@ fr:
     flats: "Appartements"
     bookings: "Mes Réservations"
     booking_admin: "Demandes de Réservations"
-    our_flats: "Nos appartements"
+    about_us: "A propos"
+    our_flats: "Appartements"
+    our_suggestions: "Suggestions"
     contact: "Contact"
     email_us: "Contactez nous!"
     developer: "Besoin d'un site?"
@@ -85,4 +87,6 @@ fr:
     first_name: "Prénom"
     last_name: "Nom de famille"
   mailer:
+  suggestions:
+    phrase: "Nos suggestions à Antibes"
 

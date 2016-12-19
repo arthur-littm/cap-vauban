@@ -24,7 +24,9 @@ en:
     flats: "Flats"
     bookings: "My Bookings"
     booking_admin: "Bookings requests"
-    our_flats: "Our flats"
+    about_us: "About us"
+    our_flats: "Flats"
+    our_suggestions: "Suggestions"
     contact: "Contact"
     email_us: "Email us!"
     developer: "Need a website ?"
@@ -112,7 +114,8 @@ en:
     dates_until: "until the"
     line1: "The flat is available for the price of"
     for: "for"
-
+  suggestions:
+    phrase: "Our suggestions for your stay"
 
 
 

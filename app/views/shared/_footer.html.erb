@@ -1,14 +1,16 @@
 <div class="footer-container">
 
   <div class="footer-left text-center hidden-xs">
-  <h4><%= t("shared.our_flats") %></h4>
+  <h4><%= t("shared.about_us") %></h4>
     <ul class="list-inline">
-      <% Flat.all.each do |flat| %>
-      <li><%= link_to flat_path(flat) do %>
-      <i class="fa fa-home" aria-hidden="true"></i><%= flat.title %>
+      <li><%= link_to flats_path do %>
+      <i class="fa fa-home" aria-hidden="true"></i><%= t("shared.our_flats") %>
         <% end %>
       </li>
-      <% end %>
+      <li><%= link_to suggestions_path do %>
+      <i class="fa fa-list" aria-hidden="true"></i><%= t("shared.our_suggestions") %>
+        <% end %>
+      </li>
     </ul>
   </div>
   <div class="footer-middle text-center">
