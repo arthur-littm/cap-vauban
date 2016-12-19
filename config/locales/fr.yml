@@ -79,8 +79,8 @@ fr:
     pay: "Payer"
     nights: "Nuitées"
     info: "Réservation"
-    paid: "Payement reçu"
-    not_paid: "Payement non reçu"
+    paid: "Paiement reçu"
+    not_paid: "Paiement non reçu"
   devise:
     sign_out: "Se déconnecter"
     sign_in: "Se connecter"
