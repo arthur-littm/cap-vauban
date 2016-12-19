@@ -1,96 +1,356 @@
 <div class="container">
-  <h3>Booking requests [<%= @bookings.where(status: "unconfirmed").count %>]</h3>
-  <% @bookings.where(status: "unconfirmed").each do |booking| %>
-  <div class="product">
-    <div class='product-upvote'>
-      <div><i class="fa fa-calendar"></i></div>
-      <div class='product-count'><%= l(booking.start_date.to_date) %></div>
-    </div>
-    <% if booking.flat.banner_photo %>
-    <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
-    <% else %>
-    <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
-    <% end %>
-    <div class='product-body'>
-      <p><%= booking.flat.title %></p>
-      <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-      <p><%= booking.user.email %></p>
-      <p><%= booking.message %></p>
-      <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
-      <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
-    </div>
-    <div class="request-buttons">
-      <%= link_to 'Confirm', booking_status_booking_path(booking), data: { confirm: 'Confirm?' }, method: :patch, class: "btn btn-primary" %>
-      <%= link_to 'Cancel', cancelled_booking_booking_path(booking), data: { confirm: 'Cancel?' }, method: :patch, class: "btn btn-danger" %>
-    </div>
-  </div>
-  <% end %>
 
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab">Bookings requests</a></li>
+    <li role="presentation"><a href="#leport" aria-controls="leport" role="tab" data-toggle="tab">Le Port</a></li>
+    <li role="presentation"><a href="#laplage" aria-controls="laplage" role="tab" data-toggle="tab">La Plage</a></li>
+    <li role="presentation"><a href="#all-confirmed" aria-controls="all-confirmed" role="tab" data-toggle="tab">All confirmed</a></li>
+    <li role="presentation"><a href="#all-cancelled" aria-controls="all-cancelled" role="tab" data-toggle="tab">All cancelled</a></li>
+    <li role="presentation"><a href="#all-unpaid" aria-controls="all-unpaid" role="tab" data-toggle="tab">All unpaid</a></li>
+    <li role="presentation"><a href="#all-users" aria-controls="all-users" role="tab" data-toggle="tab">USERS</a></li>
+    <li role="presentation"><a href="#all-admin" aria-controls="all-admin" role="tab" data-toggle="tab">ADMIN</a></li>
 
-  <h3>Confirmed bookings [<%= @bookings.where(status: "confirmed").count %>]</h3>
-  <% @bookings.where(status: "confirmed").each do |booking| %>
-  <div class="product">
-    <div class='product-upvote'>
-      <div><i class="fa fa-calendar"></i></div>
-      <div class='product-count'><%= booking.start_date %></div>
-    </div>
-    <% if booking.flat.banner_photo %>
-    <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
-    <% else %>
-    <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
-    <% end %>
-    <div class='product-body'>
-      <p><%= booking.flat.title %></p>
-      <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-      <p><%= booking.user.email %></p>
-      <p><%= booking.message %></p>
-      <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
-      <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
-      <% if booking.order.state == "pending"%>
-      <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
-      <% elsif booking.order.state == "paid"%>
-      <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="bookings">
+      <% @unconfirmed.each do |booking| %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= l(booking.start_date.to_date) %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+        </div>
+        <div class="request-buttons">
+          <%= link_to 'Confirm', booking_status_booking_path(booking), data: { confirm: 'Confirm?' }, method: :patch, class: "btn btn-primary" %>
+          <%= link_to 'Cancel', cancelled_booking_booking_path(booking), data: { confirm: 'Cancel?' }, method: :patch, class: "btn btn-danger" %>
+        </div>
+      </div>
       <% end %>
     </div>
-    <div class="product-button">
 
-    </div>
-    <ul class="list-inline product-controls">
-      <%= link_to booking_path(booking) do %>
-      <li><i class="fa fa-info-circle"></i></li>
+    <div role="tabpanel" class="tab-pane" id="leport">
+      <h3>Requests</h3>
+      <% @bookings.where(status: "unconfirmed").each do |booking| %>
+      <% if booking.flat.title == "Le Port" %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= booking.start_date %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+          <% if booking.order.state == "pending"%>
+          <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
+          <% elsif booking.order.state == "paid"%>
+          <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+          <% end %>
+        </div>
+        <div class="request-buttons">
+          <%= link_to 'Confirm', booking_status_booking_path(booking), data: { confirm: 'Confirm?' }, method: :patch, class: "btn btn-primary" %>
+          <%= link_to 'Cancel', cancelled_booking_booking_path(booking), data: { confirm: 'Cancel?' }, method: :patch, class: "btn btn-danger" %>
+        </div>
+      </div>
       <% end %>
-    </ul>
-  </div>
-  <% end %>
-
-  <h3>Cancelled bookings [<%= @bookings.where(status: "cancelled").count %>]</h3>
-  <% @bookings.where(status: "cancelled").each do |booking| %>
-  <div class="product">
-    <div class='product-upvote'>
-      <div><i class="fa fa-calendar"></i></div>
-      <div class='product-count'><%= booking.start_date %></div>
-    </div>
-    <% if booking.flat.banner_photo %>
-    <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
-    <% else %>
-    <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
-    <% end %>
-    <div class='product-body'>
-      <p><%= booking.flat.title %></p>
-      <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-      <p><%= booking.user.email %></p>
-      <p><%= booking.message %></p>
-      <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
-      <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
-    </div>
-    <div class="product-button">
-
-    </div>
-    <ul class="list-inline product-controls">
-      <%= link_to booking_path(booking) do %>
-      <li><i class="fa fa-info-circle"></i></li>
       <% end %>
-    </ul>
+      <h3>Confirmed</h3>
+      <% @bookings.where(status: "confirmed").each do |booking| %>
+      <% if booking.flat.title == "Le Port" %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= booking.start_date %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+          <% if booking.order.state == "pending"%>
+          <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
+          <% elsif booking.order.state == "paid"%>
+          <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+          <% end %>
+        </div>
+        <ul class="list-inline product-controls">
+          <%= link_to booking_path(booking) do %>
+          <li><i class="fa fa-info-circle"></i></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="laplage">
+      <h3>Requests</h3>
+      <% @bookings.where(status: "unconfirmed").each do |booking| %>
+      <% if booking.flat.title == "La Plage" %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= booking.start_date %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+          <% if booking.order.state == "pending"%>
+          <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
+          <% elsif booking.order.state == "paid"%>
+          <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+          <% end %>
+        </div>
+        <div class="request-buttons">
+          <%= link_to 'Confirm', booking_status_booking_path(booking), data: { confirm: 'Confirm?' }, method: :patch, class: "btn btn-primary" %>
+          <%= link_to 'Cancel', cancelled_booking_booking_path(booking), data: { confirm: 'Cancel?' }, method: :patch, class: "btn btn-danger" %>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+      <h3>Confirmed</h3>
+      <% @bookings.where(status: "confirmed").each do |booking| %>
+      <% if booking.flat.title == "La Plage" %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= booking.start_date %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+          <% if booking.order.state == "pending"%>
+          <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
+          <% elsif booking.order.state == "paid"%>
+          <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+          <% end %>
+        </div>
+        <ul class="list-inline product-controls">
+          <%= link_to booking_path(booking) do %>
+          <li><i class="fa fa-info-circle"></i></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="all-confirmed">
+      <% @confirmed.each do |booking| %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= booking.start_date %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+          <% if booking.order.state == "pending"%>
+          <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
+          <% elsif booking.order.state == "paid"%>
+          <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+          <% end %>
+        </div>
+        <ul class="list-inline product-controls">
+          <%= link_to booking_path(booking) do %>
+          <li><i class="fa fa-info-circle"></i></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="all-cancelled">
+      <% @cancelled.each do |booking| %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= booking.start_date %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+        </div>
+        <ul class="list-inline product-controls">
+          <%= link_to booking_path(booking) do %>
+          <li><i class="fa fa-info-circle"></i></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="all-unpaid">
+      <% @confirmed.each do |booking| %>
+      <% if booking.order.state == "pending" %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= booking.start_date %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+          <% if booking.order.state == "pending"%>
+          <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
+          <% elsif booking.order.state == "paid"%>
+          <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+          <% end %>
+        </div>
+        <ul class="list-inline product-controls">
+          <%= link_to booking_path(booking) do %>
+          <li><i class="fa fa-info-circle"></i></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="all-users">
+      <% @bookings.each do |booking| %>
+      <% if booking.user.admin == false %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= booking.start_date %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+          <% if booking.order.state == "pending"%>
+          <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
+          <% elsif booking.order.state == "paid"%>
+          <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+          <% end %>
+        </div>
+        <ul class="list-inline product-controls">
+          <%= link_to booking_path(booking) do %>
+          <li><i class="fa fa-info-circle"></i></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="all-admin">
+      <% @bookings.each do |booking| %>
+      <% if booking.user.admin == true %>
+      <div class="product">
+        <div class='product-upvote'>
+          <div><i class="fa fa-calendar"></i></div>
+          <div class='product-count'><%= booking.start_date %></div>
+        </div>
+        <% if booking.flat.banner_photo %>
+        <%= cl_image_tag booking.flat.banner_photo.path, class: "product-image hidden-xs" %>
+        <% else %>
+        <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+        <% end %>
+        <div class='product-body'>
+          <p><%= booking.flat.title %></p>
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p><%= booking.user.email %></p>
+          <p><%= booking.message %></p>
+          <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+          <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+          <% if booking.order.state == "pending"%>
+          <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
+          <% elsif booking.order.state == "paid"%>
+          <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+          <% end %>
+        </div>
+        <ul class="list-inline product-controls">
+          <%= link_to booking_path(booking) do %>
+          <li><i class="fa fa-info-circle"></i></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
   </div>
-  <% end %>
 </div>

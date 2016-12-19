@@ -7,6 +7,9 @@ class BookingsController < ApplicationController
 
   def requests
     @bookings = Booking.all.order(start_date: :asc)
+    @confirmed = @bookings.where(status: "confirmed")
+    @unconfirmed = @bookings.where(status: "unconfirmed")
+    @cancelled = @bookings.where(status: "cancelled")
   end
 
   def show
