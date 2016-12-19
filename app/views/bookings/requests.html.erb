@@ -12,7 +12,7 @@
     <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
     <% end %>
     <div class='product-body'>
-      <h3><%= booking.flat.title %></h3>
+      <p><%= booking.flat.title %></p>
       <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
       <p><%= booking.user.email %></p>
       <p><%= booking.message %></p>
@@ -40,12 +40,17 @@
     <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
     <% end %>
     <div class='product-body'>
-      <h3><%= booking.flat.title %></h3>
+      <p><%= booking.flat.title %></p>
       <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
       <p><%= booking.user.email %></p>
       <p><%= booking.message %></p>
       <p><%= booking.start_date %> - <%= booking.end_date %></p>
       <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+      <% if booking.order.state == "pending"%>
+      <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
+      <% elsif booking.order.state == "paid"%>
+      <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+      <% end %>
     </div>
     <div class="product-button">
 
@@ -71,7 +76,7 @@
     <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
     <% end %>
     <div class='product-body'>
-      <h3><%= booking.flat.title %></h3>
+      <p><%= booking.flat.title %></p>
       <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
       <p><%= booking.user.email %></p>
       <p><%= booking.message %></p>

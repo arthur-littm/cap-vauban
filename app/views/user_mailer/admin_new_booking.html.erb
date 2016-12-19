@@ -10,7 +10,7 @@
 <% end %>
 <p>Prénom: <%= @user.first_name %></p>
 <p>Nom: <%= @user.last_name %></p>
-<p>@user.email</p>
+<p><%= @user.email %></p>
 <% if @user.bookings.where(status: "confirmed").count > 1 %>
 <p>Il à déjà réservé <%= @user.bookings.where(status: "confirmed").count %> fois</p>
 <% else %>

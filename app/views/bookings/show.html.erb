@@ -11,8 +11,12 @@
       <p><%= @booking.message %></p>
       <% if @booking.status == "unconfirmed" %>
       <p><%= t("booking.unconfirmed") %></p>
-      <% elsif @booking.status == "confirmed" %>
-      <p><%= t("booking.confirmed") %></p>
+      <% elsif @booking.status == "confirmed" && @booking.order.state == "pending"%>
+      <p><%= t("booking.confirmed") %> | <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+ <%= t("booking.not_paid") %></p>
+      <% elsif @booking.status == "confirmed" && @booking.order.state == "paid"%>
+      <p><%= t("booking.confirmed") %> | <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+ <%= t("booking.paid") %></p>
       <% elsif @booking.status == "cancelled" %>
       <p><%= t("booking.cancelled") %></p>
       <% end %>

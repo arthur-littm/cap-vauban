@@ -97,6 +97,8 @@ en:
     pay: "Payment"
     nights: "Nights"
     info: "Booking"
+    paid: "Paid"
+    not_paid: "Not paid"
   devise:
     sign_out: "Log out"
     sign_in: "Login"
