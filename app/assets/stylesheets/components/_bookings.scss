@@ -72,7 +72,10 @@
   padding: 0 20px;
   font-size: 20px;
   font-weight: 300;
-  color: white;
+  color: rgba(38, 154, 202, 0.47);
+}
+.product-controls a:hover {
+  color: #18619A;
 }
 
 .product-controls-hidden a {

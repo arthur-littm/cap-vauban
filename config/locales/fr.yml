@@ -9,7 +9,7 @@ fr:
     developer: "Besoin d'un site?"
     email_dev: "Contactez le développeur!"
   home_banner:
-    phrase: "Votre location de rêve à Antibes"
+    phrase: 'Votre "chez vous" à Antibes'
     button: "Voir les appartements"
   flats_index:
     instructions: "Choissisez l'un des appartements ci-dessous pour faire une demande de réservation"

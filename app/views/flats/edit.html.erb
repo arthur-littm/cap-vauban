@@ -2,9 +2,9 @@
   <h1>Edit <%= @flat.title %></h1>
   <%= simple_form_for @flat do |f| %>
   <%= f.input :title %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :description_english, as: :text %>
-  <%= f.input :description_italian, as: :text %>
+  <%= f.input :description, as: :text, label: "Description in French" %>
+  <%= f.input :description_english, as: :text, label: "Description in English" %>
+  <%= f.input :description_italian, as: :text, label: "Description in Italian" %>
   <div class="form-inline">
   <%= f.input :capacity, as: :integer %>
   <%= f.input :bathroom, as: :integer %>
@@ -14,9 +14,9 @@
   <%= f.input :bedrooms, as: :integer %>
   <%= f.input :beds, as: :integer %>
   </div>
-  <%= f.input :banner_photo, as: :attachinary %>
-  <%= f.input :carousel_photos, as: :attachinary %>
-  <%= f.input :photos, as: :attachinary %>
+  <%= f.input :banner_photo, as: :attachinary, label: "Photo de présentation (max 1 photo)" %>
+  <%= f.input :carousel_photos, as: :attachinary, label: "Photo du carousel (max 3 photos, mais pas inclure la même que la photo de présentation)" %>
+  <%= f.input :photos, as: :attachinary, label: "Toutes les photos (avec celle de présentation et carousel, pas de limite)" %>
   <%= f.button :submit %>
   <% end %>
 </div>

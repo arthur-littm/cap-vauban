@@ -1,0 +1,39 @@
+<div class="container-fluid booking-container" style="background-color: aliceblue;">
+<div class="text-center">
+    <h2>Here are our suggestions</h2>
+  </div>
+  <% @suggestions.each do |suggestion| %>
+  <div class="product">
+    <% if suggestion.photo %>
+    <%= cl_image_tag suggestion.photo.path, class: "product-image hidden-xs" %>
+    <% else %>
+    <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
+    <% end %>
+    <div class='product-body'>
+      <h3><%= suggestion.title %></h3>
+      <p><%= t("suggestion.content") %></p>
+      <p><i class="fa fa-pin"></i> <%= suggestion.address %></p>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <% if user_signed_in? && current_user.admin %>
+      <li>
+        <%= link_to edit_suggestion_path(suggestion) do %>
+        <i class="fa fa-wrench"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to suggestion_path(suggestion), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash"></i>
+        <% end %>
+      </li>
+      <% end %>
+      <% if suggestion.link %>
+      <li><a href="<%= suggestion.link %>" target="blank"><i class="fa fa-info-circle"></i></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <% if user_signed_in? && current_user.admin %>
+  <%= link_to "New suggestion", new_suggestion_path, class: "btn btn-primary" %>
+  <% end %>
+</div>

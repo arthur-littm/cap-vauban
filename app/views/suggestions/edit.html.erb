@@ -1,0 +1,12 @@
+<div class="container">
+  <%= simple_form_for @suggestion do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.input :content_english %>
+  <%= f.input :content_italian %>
+  <%= f.input :address %>
+  <%= f.input :link %>
+  <%= f.input :photo, as: :attachinary %>
+  <%= f.button :submit %>
+  <% end %>
+</div>
