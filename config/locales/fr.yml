@@ -60,7 +60,7 @@ fr:
     high: "Très haute saison"
     week: "semaine"
     saturdays_instructions: "Nos réservations se font du samedi au samedi, avec une arrivée prévue entre 14:00 et 18:00."
-    other_instructions: "Il est possible d'arriver en dehors de ces créneaux standard, moyennant des frais supplémentaires, contactez nous pour plus d'informations."
+    other_instructions: "Il est possible d'arriver en dehors de ces créneaux standard, moyennant des frais supplémentaires. Contactez nous pour plus d'informations."
     cleaning_fee: "Frais de ménage final obligatoire"
   booking:
     no_booking_request: "Vous n'avez pas encore de réservation!"

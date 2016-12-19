@@ -81,7 +81,7 @@ en:
     high: "High season"
     week: "week"
     saturdays_instructions: "Our bookings are from saturday to saturday every week, with arrival time between 14:00 and 18:00."
-    other_instructions: "It is possible to arrive outside of our standard arrival date or time for a small additional fee on the week price."
+    other_instructions: "It is possible to arrive outside of our standard arrival date or time for a small additional fee on the week price. Just make a standard booking and leave us a message below."
     cleaning_fee: "Mandatory cleaning fee"
   booking:
     no_booking_request: "You don't have booking yet!"
