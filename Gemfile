@@ -18,9 +18,14 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# MAP
+gem "geocoder"
+gem "gmaps4rails"
+gem "rails-assets-underscore"
+
+
 # TRANSLATION
 gem 'rails-i18n', '~> 5.0.0'
-
 
 # MONEY
 gem 'money-rails'

@@ -23,11 +23,11 @@
       <p><%= t("booking.amount") %>: <%= humanized_money_with_symbol(booking.price_cents) %></p>
       <p><%= (booking.end_date.to_date - booking.start_date.to_date).to_i %> <%= t("booking.nights") %></p>
     </div>
-    <ul class="list-inline product-controls hidden-sm hidden-xs">
+    <div class="list-inline booking-controls hidden-sm hidden-xs">
       <%= link_to booking_path(booking), class: "btn btn-primary" do %>
-      <li><i class="fa fa-info-circle"></i> <%= t("booking.info") %></li>
+      <i class="fa fa-info-circle"></i> <%= t("booking.info") %>
       <% end %>
-    </ul>
+    </div>
   </div>
   <% end %>
   <% else %>

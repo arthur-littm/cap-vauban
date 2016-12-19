@@ -2,6 +2,7 @@
   <h1>Edit <%= @flat.title %></h1>
   <%= simple_form_for @flat do |f| %>
   <%= f.input :title %>
+  <%= f.input :address %>
   <%= f.input :description, as: :text, label: "Description in French" %>
   <%= f.input :description_english, as: :text, label: "Description in English" %>
   <%= f.input :description_italian, as: :text, label: "Description in Italian" %>

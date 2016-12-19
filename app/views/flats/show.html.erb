@@ -39,11 +39,11 @@
       <div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#description" aria-controls="home" role="tab" data-toggle="tab"><%= t("flats.tab_description") %></a></li>
-          <li role="presentation"><a href="#pictures" aria-controls="profile" role="tab" data-toggle="tab"><%= t("flats.tab_pictures") %></a></li>
-          <li role="presentation"><a href="#calendar" aria-controls="profile" role="tab" data-toggle="tab"><%= t("flats.tab_calendar") %></a></li>
-          <li role="presentation"><a href="#prices" aria-controls="messages" role="tab" data-toggle="tab"><%= t("flats.tab_prices") %></a></li>
-          <li role="presentation"><a href="#map" aria-controls="messages" role="tab" data-toggle="tab"><%= t("flats.tab_map") %></a></li>
+          <li role="presentation" class="active"><a href="#description" role="tab" data-toggle="tab"><%= t("flats.tab_description") %></a></li>
+          <li role="presentation"><a href="#pictures" role="tab" data-toggle="tab"><%= t("flats.tab_pictures") %></a></li>
+          <li role="presentation"><a href="#calendar" role="tab" data-toggle="tab"><%= t("flats.tab_calendar") %></a></li>
+          <li role="presentation"><a href="#prices" role="tab" data-toggle="tab"><%= t("flats.tab_prices") %></a></li>
+          <li role="presentation"><a href="#tab_map" role="tab" data-toggle="tab"><%= t("flats.tab_map") %></a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -82,6 +82,7 @@
                   <p><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i> <%= t("flats.fridge") %></p>
                 </div>
               </div>
+              <div id="map" style="width: 100%; height: 450px;"></div>
             </div>
           </div>
 
@@ -178,68 +179,68 @@
             <% end %>
           </div>
 
-          <div role="tabpanel" class="tab-pane map" id="map">
+          <div role="tabpanel" class="tab-pane map" id="tab_map">
             <h4>Map</h4>
-            <div class="" id="map">
-            </div>
+            <div id="map" style="width: 100%; height: 400px;"></div>
           </div>
         </div>
+      </div>
 
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <div class="booking-action fixed-action hidden-xs hidden-sm">
+      <h3><%= t("booking.booking_request") %></h3>
+      <% if user_signed_in? %>
+      <p><%= t("prices.saturdays_instructions") %></p>
+      <p class="booking-extra-info"><i class="fa fa-info-circle"></i> <%= t("prices.other_instructions") %></p>
+      <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
+      <div class="text-center">
+        <div class="input-daterange input-group" id="datepicker">
+          <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="<%= t("booking.from") %>">
+          <span class="input-group-addon"><%= t("booking.to") %></span>
+          <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="<%= t("booking.until") %>">
+        </div>
+        <div class="booking-message">
+          <%= f.input :message, as: :text, label: false, placeholder: t("booking.message") %>
+        </div>
+        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        <%= t("booking.book") %>
+        <% end %>
+        <% end %>
+        <% else %>
+        <%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to t("devise.sign_up"), new_user_registration_path, class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="booking-action fixed-action hidden-xs hidden-sm">
-        <h3><%= t("booking.booking_request") %></h3>
-        <% if user_signed_in? %>
-        <p><%= t("prices.saturdays_instructions") %></p>
-        <p class="booking-extra-info"><i class="fa fa-info-circle"></i> <%= t("prices.other_instructions") %></p>
-        <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
-        <div class="text-center">
-          <div class="input-daterange input-group" id="datepicker">
-            <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="<%= t("booking.from") %>">
-            <span class="input-group-addon"><%= t("booking.to") %></span>
-            <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="<%= t("booking.until") %>">
-          </div>
-          <div class="booking-message">
-            <%= f.input :message, as: :text, label: false, placeholder: t("booking.message") %>
-          </div>
-          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-          <%= t("booking.book") %>
-          <% end %>
-          <% end %>
-          <% else %>
-          <%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %>
-          <%= link_to t("devise.sign_up"), new_user_registration_path, class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
-      <div class="booking-action hidden-md hidden-lg">
+    <div class="booking-action hidden-md hidden-lg">
       <h3><%= t("booking.booking_request") %></h3>
-        <% if user_signed_in? %>
-        <p><%= t("prices.saturdays_instructions") %></p>
-        <p class="booking-extra-info"><i class="fa fa-info-circle"></i> <%= t("prices.other_instructions") %></p>
-        <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
-        <div class="text-center">
-          <div class="input-daterange input-group" id="datepicker">
-            <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="<%= t("booking.from") %>">
-            <span class="input-group-addon"><%= t("booking.to") %></span>
-            <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="<%= t("booking.until") %>">
-          </div>
-          <div class="booking-message">
-            <%= f.input :message, as: :text, label: false, placeholder: t("booking.message") %>
-          </div>
-          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-          <%= t("booking.book") %>
-          <% end %>
-          <% end %>
-          <% else %>
-          <%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %>
-          <%= link_to t("devise.sign_up"), new_user_registration_path, class: "btn btn-primary" %>
-          <% end %>
+      <% if user_signed_in? %>
+      <p><%= t("prices.saturdays_instructions") %></p>
+      <p class="booking-extra-info"><i class="fa fa-info-circle"></i> <%= t("prices.other_instructions") %></p>
+      <%= simple_form_for [@flat, @flat.bookings.build] do |f| %>
+      <div class="text-center">
+        <div class="input-daterange input-group" id="datepicker">
+          <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="<%= t("booking.from") %>">
+          <span class="input-group-addon"><%= t("booking.to") %></span>
+          <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="<%= t("booking.until") %>">
         </div>
+        <div class="booking-message">
+          <%= f.input :message, as: :text, label: false, placeholder: t("booking.message") %>
+        </div>
+        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        <%= t("booking.book") %>
+        <% end %>
+        <% end %>
+        <% else %>
+        <%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to t("devise.sign_up"), new_user_registration_path, class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- MODAL PICTURES -->
@@ -279,7 +280,29 @@
 
 
 <%= content_for(:after_js) do %>
+<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="https://cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-marker-clusterer/1.0.0/markerclusterer_compiled.js"></script>
+<script src="https://raw.githubusercontent.com/apneadiving/Google-Maps-for-Rails/master/js_compilation/gmaps_google.js"></script>
+<script src="https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js"></script>
 <script type="text/javascript">
+
+  $(document).ready(function(){
+    var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
+    handler.buildMap({ internal: { id: 'map' } }, function(){
+     markers = handler.addMarkers([
+     {
+      "lat": <%= @flat_lat %>,
+      "lng": <%= @flat_lng %>,
+      "infowindow": "<h3>Cap Vauban</h3><p><img src='http://res.cloudinary.com/dwiftfzlw/image/upload/c_scale,h_200/v1482018047/lrr86gbib7smuxssmxjg.jpg' height='200'></p>"
+    },
+    ]);
+     handler.bounds.extendWith(markers);
+     handler.fitMapToBounds();
+   });
+  })
 
   $(document).ready(function(){
 

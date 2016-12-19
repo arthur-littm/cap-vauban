@@ -8,5 +8,7 @@
 //= require fullcalendar
 //= require jquery-ui
 //= require bootstrap-datepicker
+//= require underscore
+//= require gmaps/google
 //= require_tree .
 

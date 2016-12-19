@@ -10,6 +10,8 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @bookings = Booking.where(flat: @flat).where(status: "confirmed")
+    @flat_lat = @flat.latitude
+    @flat_lng = @flat.longitude
   end
 
   def edit
@@ -28,6 +30,6 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:title, :description, :description_english, :description_italian, :capacity, :bathroom, :toilet, :bedrooms, :beds, :banner_photo, carousel_photos: [], photos: [])
+    params.require(:flat).permit(:title, :address, :description, :description_english, :description_italian, :capacity, :bathroom, :toilet, :bedrooms, :beds, :banner_photo, carousel_photos: [], photos: [])
   end
 end
