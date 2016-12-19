@@ -75,6 +75,8 @@ fr:
     sign_out: "Se déconnecter"
     sign_in: "Se connecter"
     sign_up: "Inscription"
+    already_account: "Vous avez déjà un compte?"
+    no_account_yet: "Vous n'avez pas encore de compte?"
     password: "Mot de passe"
     password_confirmation: "Confirmez mot de passe"
     forgot_password: "Mot de passe oublié ?"

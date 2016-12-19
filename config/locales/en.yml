@@ -96,6 +96,8 @@ en:
     sign_out: "Log out"
     sign_in: "Login"
     sign_up: "Signup"
+    already_account: "You already have an account?"
+    no_account_yet: "You don't have an account yet?"
     password: "Password"
     password_confirmation: "Confirm password"
     forgot_password: "Forgot your password?"

@@ -39,6 +39,7 @@
             <%= f.button :submit, t("devise.sign_up"), class:"btn btn-primary btn-block devise-button" %>
             <% end %>
           </div>
+          <%= link_to t("devise.already_account"), new_session_path(resource_name) %>
         </div>
       </div>
     </div>
