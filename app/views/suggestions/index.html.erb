@@ -37,10 +37,12 @@
       <% end %>
       <% if user_signed_in? && current_user.admin %>
       <%= link_to "New suggestion", new_suggestion_path, class: "btn btn-primary" %>
+      <% else %>
+      <a href="mailto:francois@cap-vauban.com" class="btn btn-primary"><%= t("suggestions.proposition") %></a>
       <% end %>
     </div>
     <div class="col-xs-12 col-md-5">
-    <div id="map" class="suggestion-map" class="hidden-xs"></div>
+      <div id="map" class="suggestion-map" class="hidden-xs"></div>
     </div>
   </div>
 </div>
@@ -54,18 +56,18 @@
     handler.buildMap({ internal: { id: 'map' } }, function(){
      markers = handler.addMarkers([
       <% @suggestions.each do |suggestion| %>
-     {
-      "lat": <%= suggestion.latitude %>,
-      "lng": <%= suggestion.longitude %>,
-      "infowindow": "<h4><%= suggestion.title %></h4>"
-    },
-    <% end %>
-    ]);
+      {
+        "lat": <%= suggestion.latitude %>,
+        "lng": <%= suggestion.longitude %>,
+        "infowindow": "<h4><%= suggestion.title %></h4>"
+      },
+      <% end %>
+      ]);
      handler.bounds.extendWith(markers);
      handler.fitMapToBounds();
    });
   });
 
- </script>
- <% end %>
+</script>
+<% end %>
 
