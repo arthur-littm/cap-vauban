@@ -37,6 +37,9 @@ fr:
     oven: "Four"
     dishwasher: "Lave vaiselle"
     fridge: "Grand frigo"
+    location: "Emplacement"
+    airport: "Aéroport"
+    train_station: "Gare"
     button: "Page de réservation"
     description: '@flat.description'
     tab_description: "Description"

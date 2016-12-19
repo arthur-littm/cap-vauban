@@ -58,6 +58,9 @@ en:
     oven: "Oven"
     dishwasher: "Dishwasher"
     fridge: "Fridge"
+    location: "Location"
+    train_station: "from train station"
+    airport: "from airport"
     button: "Booking page"
     description: '@flat.description_english'
     tab_description: "Description"
