@@ -1,0 +1,8 @@
+<h3>Réservation payée - <%= @booking.order.amount %></h3>
+<p>Status: <%= @booking.order.state %></p>
+<p>Date d'arrivée: <%= l(@booking.start_date.to_date) %></p>
+<p>Date de départ: <%= l(@booking.end_date.to_date) %></p>
+<p>Nombres de nuits: <%= (@booking.end_date.to_date - @booking.start_date.to_date).to_i %></p>
+<p>Prénom: <%= @user.first_name %></p>
+<p>Nom: <%= @user.last_name %></p>
+<p><%= @user.email %></p>

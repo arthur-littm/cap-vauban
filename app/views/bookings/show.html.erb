@@ -26,17 +26,19 @@
     </div>
     <div class="booking-controls">
       <%= link_to t("booking.flat"), flat_path(@booking.flat), class: "btn btn-primary" %>
-      <% if @booking.status == "confirmed" %>
+      <% if @booking.status == "confirmed" && @booking.order.state == "pending"%>
       <%= form_tag order_payments_path(@order) do %>
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
       data-name="Payment"
       data-description="Booking <%= @booking.start_date %> <%= t("booking.to") %> <%= @booking.end_date %>"
       data-amount="<%= @order.amount_cents %>"
-      data-currency="<%= @order.amount.currency %>">
+      data-currency="<%= @order.amount.currency %>"
+      data-locale="auto">
     </script>
-
     <% end %>
+      <% elsif @booking.status == "confirmed" && @booking.order.state == "paid"%>
+      <button class="payment-recieved-button" disabled=""><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></button>
     <% end %>
   </div>
 </div>

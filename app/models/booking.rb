@@ -14,6 +14,10 @@ class Booking < ApplicationRecord
     # UserMailer.new_booking(self.user).deliver_later(wait: 5.minutes)
   end
 
+  def send_payment_mail
+    UserMailer.payment(self.user, self).deliver_now
+  end
+
   def send_cancelled_booking_mail
     UserMailer.cancelled_booking(self.user, self).deliver_now
     # UserMailer.new_booking(self.user).deliver_later(wait: 5.minutes)

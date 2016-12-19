@@ -15,6 +15,7 @@ class PaymentsController < ApplicationController
     currency:     @order.amount.currency
     )
 
+    booking.send_payment_mail
     @order.update(payment: charge.to_json, state: 'paid')
     redirect_to booking_path(booking)
 
