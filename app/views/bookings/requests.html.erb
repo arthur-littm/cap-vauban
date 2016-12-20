@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container booking-container">
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -30,6 +30,10 @@
       <% @bookings_leport.where(status: "confirmed").each do |booking| %>
       <%= render "booking-confirmed", booking: booking %>
       <% end %>
+      <h3>Cancelled</h3>
+      <% @bookings_leport.where(status: "cancelled").each do |booking| %>
+      <%= render "booking-confirmed", booking: booking %>
+      <% end %>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="laplage">
@@ -39,6 +43,10 @@
       <% end %>
       <h3>Confirmed</h3>
       <% @bookings_laplage.where(status: "confirmed").each do |booking| %>
+      <%= render "booking-confirmed", booking: booking %>
+      <% end %>
+      <h3>Cancelled</h3>
+      <% @bookings_laplage.where(status: "cancelled").each do |booking| %>
       <%= render "booking-confirmed", booking: booking %>
       <% end %>
     </div>
@@ -55,7 +63,7 @@
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="all-unpaid">
-      <% @confirmed.each do |booking| %>
+      <% @unpaid.each do |booking| %>
       <% if booking.order.state == "pending" %>
       <%= render "booking-confirmed", booking: booking %>
       <% end %>
@@ -63,15 +71,45 @@
     </div>
 
     <div role="tabpanel" class="tab-pane" id="all-users">
-      <% @users_bookings.each do |booking| %>
-      <%= render "booking-confirmed", booking: booking %>
-      <% end %>
+      <div class="row">
+        <div class="col-xs-6 column-request">
+          <h4>Le Port</h4>
+          <% @users_bookings.each do |booking| %>
+          <% if booking.flat.title == "Le Port" %>
+          <%= render "booking-confirmed", booking: booking %>
+          <% end %>
+          <% end %>
+        </div>
+        <div class="col-xs-6 column-request">
+          <h4>La Plage</h4>
+          <% @users_bookings.each do |booking| %>
+          <% if booking.flat.title == "La Plage" %>
+          <%= render "booking-confirmed", booking: booking %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="all-admin">
-      <% @admin_bookings.each do |booking| %>
-      <%= render "booking-confirmed", booking: booking %>
-      <% end %>
+      <div class="row">
+        <div class="col-xs-6 column-request">
+          <h4>Le Port</h4>
+          <% @admin_bookings.each do |booking| %>
+          <% if booking.flat.title == "Le Port" %>
+          <%= render "booking-confirmed", booking: booking %>
+          <% end %>
+          <% end %>
+        </div>
+        <div class="col-xs-6 column-request">
+          <h4>La Plage</h4>
+          <% @admin_bookings.each do |booking| %>
+          <% if booking.flat.title == "La Plage" %>
+          <%= render "booking-confirmed", booking: booking %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

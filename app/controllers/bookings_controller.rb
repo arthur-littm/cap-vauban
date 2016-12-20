@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
     @bookings_laplage = @bookings.where(flat: laplage)
     @confirmed = @bookings.where(status: "confirmed")
     @unconfirmed = @bookings.where(status: "unconfirmed")
+    @unpaid = @users_bookings
     @cancelled = @bookings.where(status: "cancelled")
     @admin_bookings = Booking.all.order(start_date: :asc).where(user: admin)
   end
@@ -131,6 +132,15 @@ class BookingsController < ApplicationController
       redirect_to requests_path, notice: "Booking successfully cancelled"
     else
       redirect_to requests_path, alert: "Something went wrong, booking not cancelled"
+    end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    if @booking.destroy
+      redirect_to requests_path, notice: "Booking successfully deleted"
+    else
+      redirect_to requests_path, alert: "Something went wrong!"
     end
   end
 

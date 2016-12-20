@@ -16,10 +16,20 @@
     <p><%= booking.message %></p>
     <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
     <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
-    <% if booking.order.state == "pending"%>
+    <% if booking.user.admin == true %>
+    <p><i class="fa fa-user" aria-hidden="true"></i> ADMIN BOOKING</p>
+    <% elsif booking.order.state == "pending"%>
     <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= t("booking.not_paid") %></p>
     <% elsif booking.order.state == "paid"%>
     <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
+    <% end %>
+  </div>
+  <div class="requests-controls">
+    <% if booking.status == "confirmed" && booking.order.state == "pending" || booking.user.admin == true && booking.status != "cancelled" %>
+    <%= link_to 'Edit', edit_booking_path(booking), class: "btn btn-info btn-xs" %>
+    <%= link_to 'Cancel', cancelled_booking_booking_path(booking), data: { confirm: 'Cancel?' }, method: :patch, class: "btn btn-danger btn-xs" %>
+    <% elsif booking.status == 'cancelled' %>
+    <%= link_to 'Delete', booking_path(booking), data: { confirm: 'Delete?' }, method: :delete, class: "btn btn-danger btn-xs" %>
     <% end %>
   </div>
   <ul class="list-inline product-controls">

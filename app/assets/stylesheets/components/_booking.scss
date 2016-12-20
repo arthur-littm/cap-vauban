@@ -62,3 +62,20 @@
   color: red;
 }
 
+.fa-user {
+  color: #246AFF;
+}
+
+.column-request {
+  h4 {
+    text-align: center;
+  }
+  .product {
+    .product-upvote {
+      display: none;
+    }
+    .product-image {
+      width: 130px;
+    }
+  }
+}
