@@ -114,9 +114,12 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
-      redirect_to booking_path(@booking), notice: "Booking successfully updated"
+      @order = @booking.order
+      @order.amount = @booking.price_cents
+      @order.save
+      redirect_to requests_path, notice: "Booking successfully updated"
     else
-      redirect_to booking_path(@booking), alert: "Something went wrong"
+      redirect_to requests_path, alert: "Something went wrong"
     end
   end
 
@@ -134,6 +137,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :status, :message)
+    params.require(:booking).permit(:flat_id, :price_cents, :start_date, :end_date, :status, :message)
   end
 end

@@ -2,12 +2,28 @@
   <h1>Edit booking of <%= @booking.user.first_name %> <%= @booking.user.last_name %> (<%= @booking.start_date %> - <%= @booking.end_date %>)</h1>
   <%= simple_form_for @booking do |f| %>
   <%= f.association :flat %>
-  <%= f.input :price_cents, as: :integer %>
+  <div class="form-inline">
+  <%= f.input :price_cents, as: :integer, label: "Price" %>
   <div class="input-daterange input-group" id="datepicker">
     <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="From">
     <span class="input-group-addon">to</span>
     <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
   </div>
+  </div>
   <%= f.button :submit %>
   <% end %>
 </div>
+
+<%= content_for(:after_js) do %>
+<script type="text/javascript">
+
+    $('.datepicker').datepicker({
+      autoclose: true,
+      format: "yyyy-mm-dd",
+      daysOfWeekDisabled: "0,1,2,3,4,5",
+      daysOfWeekHighlighted: "6",
+      todayHighlight: true
+      });
+
+</script>
+<% end %>
