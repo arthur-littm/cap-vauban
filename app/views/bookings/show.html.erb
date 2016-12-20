@@ -36,10 +36,6 @@
       data-currency="<%= @order.amount.currency %>"
       data-locale="auto">
     </script>
-    <p>
-    <%= label_tag(:couponCode, 'Coupon:') %>
-    <%= text_field_tag(:couponCode) %>
-  </p>
     <% end %>
       <% elsif @booking.status == "confirmed" && @booking.order.state == "paid"%>
       <button class="payment-recieved-button" disabled=""><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></button>
