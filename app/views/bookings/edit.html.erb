@@ -1,5 +1,5 @@
-<div class="container">
-  <h1>Edit booking of <%= @booking.user.first_name %> <%= @booking.user.last_name %> (<%= @booking.start_date %> - <%= @booking.end_date %>)</h1>
+<div class="container booking-container">
+  <h2>Edit booking of <%= @booking.user.first_name %> <%= @booking.user.last_name %> (<%= @booking.start_date %> - <%= @booking.end_date %>)</h2>
   <%= simple_form_for @booking do |f| %>
   <%= f.association :flat %>
   <div class="form-inline">

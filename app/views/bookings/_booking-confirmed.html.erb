@@ -11,6 +11,7 @@
   <div class='product-body'>
     <p><%= booking.flat.title %></p>
     <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+    <p><%= booking.user.phone %></p>
     <p><%= booking.user.email %></p>
     <p><%= booking.message %></p>
     <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>

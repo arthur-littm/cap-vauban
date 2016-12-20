@@ -94,6 +94,7 @@ fr:
     remember_me: "Se souvenir de moi"
     first_name: "Prénom"
     last_name: "Nom de famille"
+    phone: "Téléphone"
   mailer:
     new_booking_subject: "Réservation confirmée"
     cancelled_booking_subject: "Réservation annulée"

@@ -46,4 +46,19 @@
   margin: 10px auto;
   font-weight: 300;
 }
+.full-width-controls {
+  a {
+    width: 100%;
+    margin-top:0px;
+    margin-bottom:5px;
+  }
+}
+
+.fa-check-circle-o {
+  color: green;
+}
+
+.fa-exclamation-triangle {
+  color: red;
+}
 

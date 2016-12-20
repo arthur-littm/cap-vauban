@@ -8,9 +8,24 @@
   background-color: white;
 }
 
+.product-bordered {
+  border: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.product-bordered:hover {
+  background-color: whitesmoke;
+}
+
 /* Body design */
 .product-body {
   flex: 1 1 auto;
+  .product-body-user p {
+    color: black;
+
+  }
+}
+.product-body h4 {
+  margin: 5px;
 }
 .product-body h3 {
   font-weight: bold;
@@ -66,7 +81,9 @@
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 0px;
+  a {
+    margin: 5px;
+  }
 }
 .product-controls a {
   padding: 0 20px;

@@ -28,7 +28,7 @@
       <% end %>
       <h3>Confirmed</h3>
       <% @bookings_leport.where(status: "confirmed").each do |booking| %>
-      <%= render "booking-card", booking: booking %>
+      <%= render "booking-confirmed", booking: booking %>
       <% end %>
     </div>
 
@@ -39,38 +39,38 @@
       <% end %>
       <h3>Confirmed</h3>
       <% @bookings_laplage.where(status: "confirmed").each do |booking| %>
-      <%= render "booking-card", booking: booking %>
+      <%= render "booking-confirmed", booking: booking %>
       <% end %>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="all-confirmed">
       <% @confirmed.each do |booking| %>
-      <%= render "booking-card", booking: booking %>
+      <%= render "booking-confirmed", booking: booking %>
       <% end %>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="all-cancelled">
       <% @cancelled.each do |booking| %>
-      <%= render "booking-card", booking: booking %>
+      <%= render "booking-confirmed", booking: booking %>
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="all-unpaid">
       <% @confirmed.each do |booking| %>
       <% if booking.order.state == "pending" %>
-      <%= render "booking-card", booking: booking %>
+      <%= render "booking-confirmed", booking: booking %>
       <% end %>
       <% end %>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="all-users">
       <% @users_bookings.each do |booking| %>
-      <%= render "booking-card", booking: booking %>
+      <%= render "booking-confirmed", booking: booking %>
       <% end %>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="all-admin">
       <% @admin_bookings.each do |booking| %>
-      <%= render "booking-card", booking: booking %>
+      <%= render "booking-confirmed", booking: booking %>
       <% end %>
     </div>
   </div>
