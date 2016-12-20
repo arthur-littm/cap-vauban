@@ -49,7 +49,11 @@
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="description">
             <div class="media-section">
+              <% if I18n.locale == I18n.default_locale %>
               <p><%= @flat.description %></p>
+              <% else %>
+              <p><%= @flat.description_english %></p>
+              <%end%>
               <div class="row">
                 <div class="col-sm-3">
                   <p><strong><%= t("flats.flat") %>:</strong></p>

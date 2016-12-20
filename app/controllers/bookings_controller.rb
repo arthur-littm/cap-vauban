@@ -56,7 +56,11 @@ class BookingsController < ApplicationController
     if @booking.status == "unconfirmed"
       @booking.status = "confirmed"
       @booking.save
-      @booking.send_new_booking_mail
+      if I18n.locale == I18n.default_locale
+        @booking.send_new_booking_mail_fr
+      else
+        @booking.send_new_booking_mail_en
+      end
       redirect_to requests_path
     else
       redirect_to requests_path, alert: "Something went wrong, booking unconfirmed"
@@ -128,7 +132,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = "cancelled"
     if @booking.save
-      @booking.send_cancelled_booking_mail
+      if I18n.locale == I18n.default_locale
+        @booking.send_cancelled_booking_mail_fr
+      else
+        @booking.send_cancelled_booking_mail_en
+      end
       redirect_to requests_path, notice: "Booking successfully cancelled"
     else
       redirect_to requests_path, alert: "Something went wrong, booking not cancelled"

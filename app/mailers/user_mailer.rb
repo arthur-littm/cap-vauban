@@ -1,9 +1,30 @@
 class UserMailer < ApplicationMailer
 
-  def new_booking(user, booking)
+  def french_new_booking(user, booking)
     @user = user  # Instance variable => available in view
     @booking = booking
     mail(to: @user.email, subject: 'Cap Vauban - #{t("mailer.new_booking_subject")}')
+    # This will render a view in `app/views/user_mailer`!
+  end
+
+  def english_new_booking(user, booking)
+    @user = user  # Instance variable => available in view
+    @booking = booking
+    mail(to: @user.email, subject: 'Cap Vauban - #{t("mailer.new_booking_subject")}')
+    # This will render a view in `app/views/user_mailer`!
+  end
+
+  def french_cancelled_booking(user, booking)
+    @user = user  # Instance variable => available in view
+    @booking = booking
+    mail(to: @user.email, subject: 'Cap Vauban - #{t("mailer.cancelled_booking_subject")}')
+    # This will render a view in `app/views/user_mailer`!
+  end
+
+  def english_cancelled_booking(user, booking)
+    @user = user  # Instance variable => available in view
+    @booking = booking
+    mail(to: @user.email, subject: 'Cap Vauban - #{t("mailer.cancelled_booking_subject")}')
     # This will render a view in `app/views/user_mailer`!
   end
 
@@ -11,13 +32,6 @@ class UserMailer < ApplicationMailer
     @user = user  # Instance variable => available in view
     @booking = booking
     mail(to: @user.email, subject: 'Cap Vauban - Paiement reçu')
-    # This will render a view in `app/views/user_mailer`!
-  end
-
-  def cancelled_booking(user, booking)
-    @user = user  # Instance variable => available in view
-    @booking = booking
-    mail(to: @user.email, subject: 'Cap Vauban - #{t("mailer.cancelled_booking_subject")}')
     # This will render a view in `app/views/user_mailer`!
   end
 

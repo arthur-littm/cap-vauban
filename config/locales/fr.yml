@@ -71,7 +71,7 @@ fr:
     message: "Écrivez nous"
     book: "Réserver"
     your_booking: "Votre demande de réservation"
-    amount: "Total"
+    amount: "Prix"
     unconfirmed: "En attente de confirmation"
     confirmed: "Réservé"
     cancelled: "Annulé"

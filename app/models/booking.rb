@@ -9,16 +9,25 @@ class Booking < ApplicationRecord
 
   monetize :price_cents
 
-  def send_new_booking_mail
-    UserMailer.new_booking(self.user, self).deliver_now
+  # FRANCAIS
+  def send_new_booking_mail_fr
+    UserMailer.french_new_booking(self.user, self).deliver_now
   end
 
-  def send_payment_mail
+  def send_cancelled_booking_mail_fr
+    UserMailer.french_cancelled_booking(self.user, self).deliver_now
+  end
+  # ENGLISH
+  def send_new_booking_mail_en
+    UserMailer.english_new_booking(self.user, self).deliver_now
+  end
+
+  def send_cancelled_booking_mail_en
+    UserMailer.english_cancelled_booking(self.user, self).deliver_now
+  end
+  # ADMIN Mails
+  def send_admin_payment_mail
     UserMailer.payment(self.user, self).deliver_now
-  end
-
-  def send_cancelled_booking_mail
-    UserMailer.cancelled_booking(self.user, self).deliver_now
   end
   private
   def send_admin_new_booking
