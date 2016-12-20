@@ -2,6 +2,7 @@
 <p>Date d'arrivée: <%= l(@booking.start_date.to_date) %></p>
 <p>Date de départ: <%= l(@booking.end_date.to_date) %></p>
 <p>Nombres de nuits: <%= (@booking.end_date.to_date - @booking.start_date.to_date).to_i %></p>
+<p>Prix: <%= humanized_money_with_symbol(@booking.price_cents) %></p>
 <h4>Utilisateur</h4>
 <% if @booking.message != "" %>
 <p>Message: <%= @booking.message %></p>

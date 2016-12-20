@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def create
-    booking = @order.booking
+    @booking = @order.booking
     customer = Stripe::Customer.create(
       source: params[:stripeToken],
       email:  params[:stripeEmail]
@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, state: 'paid')
-    booking.send_admin_payment_mail
+    @booking.send_admin_payment_mail
     redirect_to booking_path(booking)
 
   rescue Stripe::CardError => e
