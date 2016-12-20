@@ -11,13 +11,13 @@ class PaymentsController < ApplicationController
     charge = Stripe::Charge.create(
     customer:     customer.id,   # You should store this customer id and re-use it.
     amount:       @order.amount_cents, # or amount_pennies
-    description:  "Payment booking #{booking.flat.title}, for order #{booking.start_date} to #{booking.end_date}, by #{booking.user.first_name} #{booking.user.last_name}",
+    description:  "Payment booking #{@booking.flat.title}, for order #{@booking.start_date} to #{booking.end_date}, by #{booking.user.first_name} #{booking.user.last_name}",
     currency:     @order.amount.currency
     )
 
     @order.update(payment: charge.to_json, state: 'paid')
     @booking.send_admin_payment_mail
-    redirect_to booking_path(booking)
+    redirect_to booking_path(@booking)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
