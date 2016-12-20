@@ -38,6 +38,8 @@
 
     <% elsif booking.status == 'cancelled' %>
     <%= link_to 'Delete', booking_path(booking), data: { confirm: 'Delete?' }, method: :delete, class: "btn btn-danger btn-xs" %>
+    <% else %>
+    <%= link_to 'Edit', edit_booking_path(booking), class: "btn btn-info btn-xs" %>
     <% end %>
   </div>
 </div>
