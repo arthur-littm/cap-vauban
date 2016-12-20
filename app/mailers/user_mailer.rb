@@ -31,7 +31,7 @@ class UserMailer < ApplicationMailer
   def payment(user, booking)
     @user = user  # Instance variable => available in view
     @booking = booking
-    mail(to: @user.email, subject: 'Cap Vauban - Paiement reçu')
+    mail(to: "francois@cap-vauban.com, lecapvauban@gmail.com", subject: 'Cap Vauban - Paiement reçu')
     # This will render a view in `app/views/user_mailer`!
   end
 
