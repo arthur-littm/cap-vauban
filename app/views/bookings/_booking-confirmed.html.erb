@@ -9,6 +9,11 @@
   <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
   <% end %>
   <div class='product-body'>
+    <% if booking.user.admin == true %>
+    <p><%= booking.flat.title %></p>
+    <p><%= booking.message %></p>
+    <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
+    <% else %>
     <p><%= booking.flat.title %></p>
     <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
     <p><%= booking.user.phone %></p>
@@ -16,6 +21,7 @@
     <p><%= booking.message %></p>
     <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
     <p><%= humanized_money_with_symbol(booking.price_cents) %></p>
+    <% end %>
     <% if booking.user.admin == true %>
     <p><i class="fa fa-user" aria-hidden="true"></i> ADMIN BOOKING</p>
     <% elsif booking.order.state == "pending"%>
@@ -24,17 +30,14 @@
     <p><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></p>
     <% end %>
   </div>
-  <div class="requests-controls">
+  <div class="request-buttons full-width-controls">
     <% if booking.status == "confirmed" && booking.order.state == "pending" || booking.user.admin == true && booking.status != "cancelled" %>
     <%= link_to 'Edit', edit_booking_path(booking), class: "btn btn-info btn-xs" %>
     <%= link_to 'Cancel', cancelled_booking_booking_path(booking), data: { confirm: 'Cancel?' }, method: :patch, class: "btn btn-danger btn-xs" %>
+    <%= link_to "User", booking_path(booking), class: "btn btn-success btn-xs" %>
+
     <% elsif booking.status == 'cancelled' %>
     <%= link_to 'Delete', booking_path(booking), data: { confirm: 'Delete?' }, method: :delete, class: "btn btn-danger btn-xs" %>
     <% end %>
   </div>
-  <ul class="list-inline product-controls">
-    <%= link_to booking_path(booking) do %>
-    <li><i class="fa fa-info-circle"></i></li>
-    <% end %>
-  </ul>
 </div>

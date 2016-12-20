@@ -1,29 +1,32 @@
 <div class="container booking-container">
-  <h2>Edit booking of <%= @booking.user.first_name %> <%= @booking.user.last_name %> (<%= @booking.start_date %> - <%= @booking.end_date %>)</h2>
+  <h2>Edit booking of <%= @booking.user.first_name %> <%= @booking.user.last_name %> (<%= l(@booking.start_date.to_date) %> - <%= l(@booking.end_date.to_date) %>)</h2>
   <%= simple_form_for @booking do |f| %>
   <%= f.association :flat %>
-  <div class="form-inline">
   <%= f.input :price_cents, as: :integer, label: "Price" %>
+  <p><strong>Dates</strong></p>
   <div class="input-daterange input-group" id="datepicker">
     <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="From">
     <span class="input-group-addon">to</span>
     <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
   </div>
-  </div>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>
 
 <%= content_for(:after_js) do %>
 <script type="text/javascript">
 
-    $('.datepicker').datepicker({
-      autoclose: true,
-      format: "yyyy-mm-dd",
-      daysOfWeekDisabled: "0,1,2,3,4,5",
-      daysOfWeekHighlighted: "6",
-      todayHighlight: true
-      });
+  $('.datepicker').datepicker({
+    autoclose: true,
+    format: "yyyy-mm-dd",
+    daysOfWeekDisabled: "0,1,2,3,4,5",
+    daysOfWeekHighlighted: "6",
+    todayHighlight: true
+  });
+  var start = new Date("<%= @booking.start_date.to_date %>")
+  var end = new Date ("<%= @booking.end_date.to_date %>")
+  $(".from").datepicker('setDate', start);
+  $(".until").datepicker('setDate', end);
 
 </script>
 <% end %>
