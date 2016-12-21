@@ -18,7 +18,7 @@
           <% else %>
           <p><%= suggestion.content_english %></p>
           <%end%>
-s          <p><i class="fa fa-map-marker"></i> <%= suggestion.address %></p>
+          <p class="product-address"><i class="fa fa-map-marker"></i> <%= suggestion.address %></p>
         </div>
         <ul class="list-inline product-controls hidden-sm hidden-xs">
           <% if user_signed_in? && current_user.admin %>

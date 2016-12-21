@@ -19,6 +19,10 @@
 /* Body design */
 .product-body {
   flex: 1 1 auto;
+  .product-address {
+    color: #5ca9ca;
+    font-size: 15px;
+  }
   .product-body-user p {
     color: black;
 
