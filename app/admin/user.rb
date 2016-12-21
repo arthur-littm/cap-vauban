@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+menu priority: 2
 
   form do |f|
     f.inputs "Identity" do
