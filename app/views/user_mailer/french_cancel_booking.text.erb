@@ -7,3 +7,7 @@ Si vous désirez réserver une autre période je vous invite a refaire une rése
 En espérant avoir le plaisir de vous accueillir prochainement à Antibes.
 Très cordialement
 Françoise et François Littmann
+
+<% if @booking.admin_comment && @booking.admin_comment != "" %>
+PS: <%= @booking.admin_comment %>
+<% end %>

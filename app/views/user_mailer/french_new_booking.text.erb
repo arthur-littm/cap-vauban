@@ -26,3 +26,7 @@ Françoise et François Littmann
 
 Paiement: http://www.cap-vauban.com/bookings
 Contrat: #
+
+<% if @booking.admin_comment && @booking.admin_comment != "" %>
+PS: <%= @booking.admin_comment %>
+<% end %>

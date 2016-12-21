@@ -7,3 +7,7 @@
 <p>En espérant avoir le plaisir de vous accueillir prochainement à Antibes.</p>
 <p>Très cordialement</p>
 <p>Françoise &amp; François Littmann</p>
+
+<% if @booking.admin_comment && @booking.admin_comment != "" %>
+<p>PS: <%= @booking.admin_comment %></p>
+<% end %>

@@ -7,3 +7,7 @@ If you would like to book other dates feel free to do so on our website: http://
 Looking forward to seeing you soon in Antibes.
 Kindest regards
 Françoise and François Littmann
+
+<% if @booking.admin_comment && @booking.admin_comment != "" %>
+PS: <%= @booking.admin_comment %>
+<% end %>
