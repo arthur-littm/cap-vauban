@@ -13,8 +13,12 @@
         <% end %>
         <div class='product-body'>
           <h3><%= suggestion.title %></h3>
+          <% if I18n.locale == I18n.default_locale %>
           <p><%= suggestion.content %></p>
-          <p><i class="fa fa-map-marker"></i> <%= suggestion.address %></p>
+          <% else %>
+          <p><%= suggestion.content_english %></p>
+          <%end%>
+s          <p><i class="fa fa-map-marker"></i> <%= suggestion.address %></p>
         </div>
         <ul class="list-inline product-controls hidden-sm hidden-xs">
           <% if user_signed_in? && current_user.admin %>
