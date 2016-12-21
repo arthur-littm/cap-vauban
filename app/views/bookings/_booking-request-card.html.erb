@@ -9,15 +9,18 @@
   <%= image_tag "background.jpg", class: "product-image hidden-xs" %>
   <% end %>
   <div class='product-body'>
-  <h4><%= booking.flat.title %></h4>
+    <h4><%= booking.flat.title %></h4>
     <div class="product-body-user">
       <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
       <p><%= booking.user.phone %></p>
       <p><%= booking.user.email %></p>
     </div>
-    <p><%= booking.message %></p>
+    <span><%= booking.message %></span>
     <p><%= l(booking.start_date.to_date) %> - <%= l(booking.end_date.to_date) %></p>
     <h4><%= humanized_money_with_symbol(booking.price_cents) %></h4>
+    <% if booking.admin_comment && booking.admin_comment != ""%>
+    <p><strong>Message au locataire:</strong> <%= booking.admin_comment %></p>
+    <% end %>
   </div>
   <div class="request-buttons full-width-controls">
     <%= link_to 'Confirm', booking_status_booking_path(booking), data: { confirm: 'Confirm?' }, method: :patch, class: "btn btn-primary btn-xs" %>

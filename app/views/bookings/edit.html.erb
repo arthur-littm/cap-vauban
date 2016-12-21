@@ -9,6 +9,7 @@
     <span class="input-group-addon">to</span>
     <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
   </div>
+  <%= f.input :admin_comment, as: :text, label: "Commentaire (inclut dans le PS du mail de confirmation)"%>
   <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
   <%= link_to 'Delete', booking_path(@booking), data: { confirm: 'Delete?' }, method: :delete, class: "btn btn-danger btn-xs" %>
