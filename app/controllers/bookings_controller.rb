@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
     laplage = Flat.all.where(title: "La Plage")
 
     @bookings = Booking.all.order(start_date: :asc)
+    @recent = Booking.all.order(created_at: :desc).last(20)
     @users_bookings = Booking.all.order(start_date: :asc).where.not(user: admin)
     @bookings_leport = @bookings.where(flat: leport)
     @bookings_laplage = @bookings.where(flat: laplage)

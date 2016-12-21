@@ -3,6 +3,7 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab">Bookings requests</a></li>
+    <li role="presentation"><a href="#recent" aria-controls="recent" role="tab" data-toggle="tab">Recent requests</a></li>
     <li role="presentation"><a href="#leport" aria-controls="leport" role="tab" data-toggle="tab">Le Port</a></li>
     <li role="presentation"><a href="#laplage" aria-controls="laplage" role="tab" data-toggle="tab">La Plage</a></li>
     <li role="presentation"><a href="#all-confirmed" aria-controls="all-confirmed" role="tab" data-toggle="tab">All confirmed</a></li>
@@ -18,6 +19,12 @@
     <div role="tabpanel" class="tab-pane active" id="bookings">
       <% @unconfirmed.each do |booking| %>
       <%= render "booking-request-card", booking: booking %>
+      <% end %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="recent">
+      <% @recent.each do |booking| %>
+      <%= render "booking-confirmed", booking: booking %>
       <% end %>
     </div>
 
