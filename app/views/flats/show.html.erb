@@ -348,10 +348,10 @@
     });
   });
 
-  $('#flat-calendar').fullCalendar({
-    viewRender: function(view,element) {
-      var now = new Date();
-      var end = new Date();
+    $('#flat-calendar').fullCalendar({
+      viewRender: function(view,element) {
+        var now = new Date();
+        var end = new Date();
       end.setMonth(now.getMonth() + 12); //Adjust as needed
 
       if ( end < view.end) {
@@ -382,3 +382,4 @@
   });
 </script>
 <% end %>
+
