@@ -5,9 +5,9 @@
 <p>Si vous désirez réserver une autre période je vous invite a refaire une réservation par <a href="http://www.cap-vauban.com/">notre site</a>.</p>
 
 <p>En espérant avoir le plaisir de vous accueillir prochainement à Antibes.</p>
-<p>Très cordialement</p>
+<p>Très cordialement,</p>
 <p>Françoise &amp; François Littmann</p>
 
-<% if @booking.admin_comment && @booking.admin_comment != "" %>
+<% if @booking.admin_comment.present? %>
 <p>PS: <%= @booking.admin_comment %></p>
 <% end %>

@@ -8,6 +8,6 @@
 <p>Kindest regards</p>
 <p>Françoise &amp; François Littmann</p>
 
-<% if @booking.admin_comment && @booking.admin_comment != "" %>
+<% if @booking.admin_comment.present? %>
 <p>PS: <%= @booking.admin_comment %></p>
 <% end %>
