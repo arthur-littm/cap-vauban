@@ -98,7 +98,7 @@ en:
     cancelled: "Cancelled"
     flat: "See flat"
     pay: "Payment"
-    payment_title: "Payment for booking"
+    payment_title: "Booking payment"
     nights: "Nights"
     info: "Booking"
     paid: "Paid"

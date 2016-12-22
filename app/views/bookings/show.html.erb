@@ -44,7 +44,8 @@
         data-name="<%= t('booking.payment_title') %>"
         data-description="<%= l(@booking.start_date.to_date) %> <%= t("booking.to") %> <%= l(@booking.end_date.to_date) %>"
         data-currency="<%= @order.amount.currency %>"
-        data-locale="auto">
+        data-locale="auto"
+        data-image="<%= image_path("favicon.png") %>">
       </script>
       <p>
        <input class="coupon" type="text" name="couponCode" id="couponCode" placeholder="Coupon">
