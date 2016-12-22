@@ -2,13 +2,16 @@
   <h2>Edit booking of <%= @booking.user.first_name %> <%= @booking.user.last_name %> (<%= l(@booking.start_date.to_date) %> - <%= l(@booking.end_date.to_date) %>)</h2>
   <%= simple_form_for @booking do |f| %>
   <%= f.association :flat %>
-  <%= f.input :price_cents, as: :integer, label: "Price" %>
+  <div class="form-inline">
+    <%= f.input :price_cents, as: :integer, label: "Price" %>
+  </div>
   <p><strong>Dates</strong></p>
   <div class="input-daterange input-group" id="datepicker">
     <input required name="booking[start_date]" type="text" class='datepicker input-sm form-control from' placeholder="From">
     <span class="input-group-addon">to</span>
     <input required name="booking[end_date]" type="text" class='datepicker input-sm form-control until' placeholder="Until">
   </div>
+
   <%= f.input :admin_comment, as: :text, label: "Commentaire (inclut dans le PS du mail de confirmation)"%>
   <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>

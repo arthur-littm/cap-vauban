@@ -119,8 +119,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    @order = @booking.order
     if @booking.update(booking_params)
-      @order = @booking.order
       @order.amount = @booking.price_cents
       @order.save
       redirect_to requests_path, notice: "Booking successfully updated"
@@ -157,5 +157,9 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:flat_id, :price_cents, :start_date, :end_date, :status, :message, :admin_comment)
+  end
+
+  def order_params
+    params.require(:order).permit(:state)
   end
 end

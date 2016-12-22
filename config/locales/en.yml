@@ -121,6 +121,27 @@ en:
   suggestions:
     phrase: "Our suggestions for your stay"
     proposition: "Suggest a new place!"
+  terms:
+    title: "Terms & Conditions"
+    info: "By paying it means you agree to our"
+    general_title: "GENERAL CONDITIONS"
+    general_content1: "The present rent is made at the following conditions:"
+    general_content1_list1: "Use peacefully places, premises being the object of the present contract are rented only as temporary residence."
+    general_content1_list2: "The tenant has the obligation to indicate, within 24 hours, any disaster arisen in the apartment or the garage."
+    general_content1_list3: "Are included in the amount of the rent, the fees for water and electricity (up to 150 kWh/week), as well as bedlinen & towels."
+    general_content1_list4: "The apartment is strictly non-smoking."
+    general_content1_list5: "The tenant can introduce no animal into premises."
+    deposit_title: "DEPOSIT"
+    deposit_content1: "The tenant will have to leave a deposit of 300€ or 3000SEK to cover potential damages which could be caused in objects furnishing the rented places."
+    deposit_content2: "The deposit will be restored at departure, made deduction, if necessary, of sums owed for the possible damages arisen during the stay, except those resulting from an abnormal wear or from a defect of the equipment."
+    inventory_title: "INVENTORY"
+    inventory_content1: "A contradictory inventory will be established in the entrance and will be the object of a checking at the end of rent."
+    inventory_content2: "On departure, the tenant has to leave:"
+    inventory_content2_list1: "Dishes clean and dishwasher empty."
+    inventory_content2_list2: "Trash cans emptied (the premises trash can is located in the second under ground)."
+    inventory_content3: "In case of loss of keys, it will be charged 70€ for one key of the apartment, 30€ for the RFID Vigik transponder and 70€ for the remote control of the garage."
+    fee_title: "ADDITIONAL FEE"
+    fee_content1: "The tenant has to pay 50€, in cash on arrival, for the final cleaning."
 
 
 

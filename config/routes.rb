@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   get '/requests', to: 'bookings#requests'
+  get '/terms', to: 'pages#terms'
 
   resources :suggestions, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :orders, only: [:show, :create] do
