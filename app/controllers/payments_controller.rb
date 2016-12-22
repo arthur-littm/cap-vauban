@@ -25,7 +25,8 @@ class PaymentsController < ApplicationController
       }
 
       charge_metadata ||= {}
-
+    else
+      @final_amount = @amount
     end
 
     customer = Stripe::Customer.create(
