@@ -98,10 +98,12 @@ en:
     cancelled: "Cancelled"
     flat: "See flat"
     pay: "Payment"
+    payment_title: "Payment for booking"
     nights: "Nights"
     info: "Booking"
     paid: "Paid"
     not_paid: "Not paid"
+    coupon_error: 'Coupon code is not valid or expired, payment cancelled'
   devise:
     sign_out: "Log out"
     sign_in: "Login"

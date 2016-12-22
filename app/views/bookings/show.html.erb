@@ -20,7 +20,11 @@
          <% elsif @booking.status == "cancelled" %>
          <p><%= t("booking.cancelled") %></p>
          <% end %>
+         <% if @booking.order.state == "pending" %>
          <h2><%= t("booking.amount") %>: <%= humanized_money_with_symbol(@booking.price_cents) %></h2>
+         <% else %>
+         <h2><%= t("booking.amount") %>: <%= humanized_money_with_symbol(@booking.order.amount) %></h2>
+         <% end %>
          <h2><i class="fa fa-calendar"></i> <%= l(@booking.start_date.to_date) %> <%= t("booking.to") %> <%= l(@booking.end_date.to_date) %></h2>
          <h2><%= (@booking.end_date.to_date - @booking.start_date.to_date).to_i %> <%= t("booking.nights") %></h2>
        </div>
@@ -29,18 +33,26 @@
          <a href="mailto:francois@cap-vauban.com" class="btn btn-success"><%= t("shared.email_us") %></a>
          <% if @booking.status == "confirmed" && @booking.order.state == "pending"%>
          <%= form_tag order_payments_path(@order) do %>
-         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-         data-name="Payment"
-         data-description="Booking <%= @booking.start_date %> <%= t("booking.to") %> <%= @booking.end_date %>"
-         data-amount="<%= @order.amount_cents %>"
-         data-currency="<%= @order.amount.currency %>"
-         data-locale="auto">
-       </script>
-       <% end %>
-       <% elsif @booking.status == "confirmed" && @booking.order.state == "paid"%>
-       <button class="payment-recieved-button" disabled=""><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></button>
-       <% end %>
-     </div>
+         <% if flash[:error].present? %>
+         <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+        <% end %>
+        <p>
+         <input type="text" name="couponCode" id="couponCode" placeholder="Coupon">
+       </p>
+       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+       data-name="<%= t('booking.payment_title') %>"
+       data-description="<%= l(@booking.start_date.to_date) %> <%= t("booking.to") %> <%= l(@booking.end_date.to_date) %>"
+       data-currency="<%= @order.amount.currency %>"
+       data-locale="auto">
+     </script>
+     <% end %>
+     <% elsif @booking.status == "confirmed" && @booking.order.state == "paid"%>
+     <button class="payment-recieved-button" disabled><i class="fa fa-check-circle-o" aria-hidden="true"></i> <%= t("booking.paid") %></button>
+
+     <% end %>
    </div>
  </div>
+</div>
