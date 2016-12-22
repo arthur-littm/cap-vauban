@@ -14,7 +14,7 @@ fr:
     phrase: 'Votre "chez vous" à Antibes'
     button: "Voir les appartements"
   flats_index:
-    instructions: "Choissisez l'un des appartements ci-dessous pour faire une demande de réservation"
+    instructions: "Choissisez l'un de nos appartements ci-dessous pour faire une demande de réservation"
     cal_instructions: "Vérifiez la disponibilité de nos appartements sur notre calendrier ci-dessous"
     up_to: "Jusqu'à"
     people: "personnes"
