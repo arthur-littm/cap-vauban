@@ -77,10 +77,12 @@ fr:
     cancelled: "Annulé"
     flat: "Voir l'appartement"
     pay: "Payer"
+    payment_title: "Paiement de réservation"
     nights: "Nuitées"
     info: "Réservation"
     paid: "Paiement reçu"
     not_paid: "Paiement non reçu"
+    coupon_error: 'Coupon non valide ou expiré, paiement annulé'
   devise:
     sign_out: "Se déconnecter"
     sign_in: "Se connecter"
