@@ -33,7 +33,7 @@ fr:
     garage: "Garage"
     wifi: "WI-FI"
     tv: "TV"
-    beds: "Lits"
+    beds: "Lits doubles"
     oven: "Four"
     dishwasher: "Lave vaiselle"
     fridge: "Grand frigo"
@@ -42,7 +42,7 @@ fr:
     beach: "mètres de la plage"
     restaurants: "mètres des restaurants"
     bars: "mètres des bars & vie nocturne"
-    airport: "kilomètres de l'aéroport"
+    airport: "kilomètres de l'aéroport international de Nice"
     button: "Page de réservation"
     description: '@flat.description'
     tab_description: "Description"
