@@ -25,9 +25,9 @@
     <% end %>
   </div>
   <div class="container calendar-container">
-  <div class="flats-instructions">
-    <h4><%= t("flats_index.cal_instructions") %></h4>
-  </div>
+    <div class="flats-instructions">
+      <h4><%= t("flats_index.cal_instructions") %></h4>
+    </div>
     <div class="calendar" id="calendar">
     </div>
   </div>
@@ -58,6 +58,7 @@
         $("#calendar .fc-prev-button").show();
       }
     },
+    locale: '<%= I18n.locale %>',
     events: [
     <% @bookings.each do |booking| %>
     {
