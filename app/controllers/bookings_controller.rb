@@ -153,6 +153,20 @@ class BookingsController < ApplicationController
     end
   end
 
+  def mark_as_paid
+    @booking = Booking.find(params[:id])
+    order = @booking.order
+    if order.update(state: 'paid')
+      redirect_to requests_path
+    else
+      redirect_to requests_path, alert: "Something went wrong, booking not cancelled"
+    end
+  end
+
+  def mark_as_unpaid
+    @order.update(state: 'pending')
+  end
+
   private
 
   def booking_params

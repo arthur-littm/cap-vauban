@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     member do
       patch '/confirm_booking', to: 'bookings#booking_status', as: :booking_status
       patch '/cancel_booking', to: 'bookings#cancel_booking', as: :cancelled_booking
+      patch '/mark_as_paid', to: 'bookings#mark_as_paid', as: :mark_as_paid
+
     end
   end
 
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :suggestions, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :orders, only: [:show, :create] do
-      resources :payments, only: [:new, :create]
+    resources :payments, only: [:new, :create]
   end
 
   mount Attachinary::Engine => "/attachinary"
