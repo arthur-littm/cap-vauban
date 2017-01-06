@@ -54,7 +54,7 @@ class PaymentsController < ApplicationController
   private
 
   COUPONS = {
-    '10OFF' => 0.10,
+    'VAUBAN2017' => 0.10,
   }
 
   def get_discount(code)
