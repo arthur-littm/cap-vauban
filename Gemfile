@@ -44,6 +44,10 @@ gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 
+# EMAIL VALIDATION
+gem "valid_email2"
+
+
 # ADMIN
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
