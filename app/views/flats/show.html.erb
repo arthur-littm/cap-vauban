@@ -50,9 +50,9 @@
           <div role="tabpanel" class="tab-pane active" id="description">
             <div class="media-section">
               <% if I18n.locale == I18n.default_locale %>
-              <p><%= @flat.description %></p>
+              <p><%= simple_format @flat.description %></p>
               <% else %>
-              <p><%= @flat.description_english %></p>
+              <p><%= simple_format @flat.description_english %></p>
               <%end%>
               <div class="row">
                 <div class="col-sm-3">
