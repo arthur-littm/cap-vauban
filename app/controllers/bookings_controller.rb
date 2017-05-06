@@ -95,15 +95,15 @@ class BookingsController < ApplicationController
     when (start_d.month == 9 && start_d.day >= 16) || (start_d.month >= 10 && start_d.day >= 1)
       week = 500
     when start_d.month == 9 && start_d.day >= 2
-      week = 650
+      week = 600
     when (start_d.month == 8 && start_d.day >= 19) || (start_d.month == 9 && start_d.day >= 1)
-      week = 800
+      week = 750
     when (start_d.month == 7 && start_d.day >= 15) || (start_d.month == 8 && start_d.day >= 1)
-      week = 950
+      week = 900
     when start_d.month == 7 && start_d.day >= 1
-      week = 800
+      week = 750
     when start_d.month == 6 && start_d.day >= 10
-      week = 650
+      week = 600
     when (start_d.month == 4 && start_d.day >= 1) || (start_d.month == 5 && start_d.day >= 1) || (start_d.month == 6 && start_d.day >= 3)
       week = 500
     when (start_d.month == 1 && start_d.day >= 7) || (start_d.month == 2 && start_d.day >= 1) || (start_d.month == 3 && start_d.day >= 1)
